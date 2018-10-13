@@ -1,17 +1,14 @@
 <idea-plugin>
-    <id>com.your.company.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <id>nl.p4lang.4f729d8f</id>
+    <name>P4-14  Languae Support plugin</name>
     <version>1.0</version>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="jpan@live.nl" url="">Jeffrey Panneman</vendor>
 
     <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+    P4-14 Language Support
     ]]></description>
 
     <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
     ]]>
     </change-notes>
 
