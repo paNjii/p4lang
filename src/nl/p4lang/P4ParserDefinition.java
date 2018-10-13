@@ -7,8 +7,7 @@ import com.intellij.psi.*;
 import com.intellij.psi.tree.*;
 import nl.p4lang.parser.P4Parser;
 import nl.p4lang.psi.*;
-import nl.p4lang.psi.P4File
-import org.apache.xmlbeans.XmlCursor;
+import nl.p4lang.psi.P4File;
 import org.jetbrains.annotations.NotNull;
 
 public class P4ParserDefinition implements ParserDefinition {
