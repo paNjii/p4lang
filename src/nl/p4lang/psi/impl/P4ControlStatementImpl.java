@@ -40,6 +40,12 @@ public class P4ControlStatementImpl extends ASTWrapperPsiElement implements P4Co
 
   @Override
   @Nullable
+  public P4ControlFnName getControlFnName() {
+    return findChildByClass(P4ControlFnName.class);
+  }
+
+  @Override
+  @Nullable
   public P4IfElseStatement getIfElseStatement() {
     return findChildByClass(P4IfElseStatement.class);
   }

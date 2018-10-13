@@ -32,4 +32,10 @@ public class P4ParserFunctionDeclarationImpl extends ASTWrapperPsiElement implem
     return findNotNullChildByClass(P4ParserFunctionBody.class);
   }
 
+  @Override
+  @NotNull
+  public P4ParserStateName getParserStateName() {
+    return findNotNullChildByClass(P4ParserStateName.class);
+  }
+
 }

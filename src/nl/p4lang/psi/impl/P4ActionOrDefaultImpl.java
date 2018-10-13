@@ -26,4 +26,10 @@ public class P4ActionOrDefaultImpl extends ASTWrapperPsiElement implements P4Act
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public P4ActionName getActionName() {
+    return findChildByClass(P4ActionName.class);
+  }
+
 }

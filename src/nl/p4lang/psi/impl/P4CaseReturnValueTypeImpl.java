@@ -26,4 +26,22 @@ public class P4CaseReturnValueTypeImpl extends ASTWrapperPsiElement implements P
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public P4ControlFunctionName getControlFunctionName() {
+    return findChildByClass(P4ControlFunctionName.class);
+  }
+
+  @Override
+  @Nullable
+  public P4ParserExceptionName getParserExceptionName() {
+    return findChildByClass(P4ParserExceptionName.class);
+  }
+
+  @Override
+  @Nullable
+  public P4ParserStateName getParserStateName() {
+    return findChildByClass(P4ParserStateName.class);
+  }
+
 }

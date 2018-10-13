@@ -46,6 +46,12 @@ public class P4RegisterDeclarationImpl extends ASTWrapperPsiElement implements P
 
   @Override
   @NotNull
+  public P4RegisterName getRegisterName() {
+    return findNotNullChildByClass(P4RegisterName.class);
+  }
+
+  @Override
+  @NotNull
   public P4WidthDeclaration getWidthDeclaration() {
     return findNotNullChildByClass(P4WidthDeclaration.class);
   }

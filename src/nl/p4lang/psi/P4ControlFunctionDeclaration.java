@@ -10,4 +10,7 @@ public interface P4ControlFunctionDeclaration extends PsiElement {
   @NotNull
   P4ControlBlock getControlBlock();
 
+  @NotNull
+  P4ControlFnName getControlFnName();
+
 }

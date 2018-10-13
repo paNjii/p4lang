@@ -14,6 +14,9 @@ public interface P4ControlStatement extends PsiElement {
   P4ApplyTableCall getApplyTableCall();
 
   @Nullable
+  P4ControlFnName getControlFnName();
+
+  @Nullable
   P4IfElseStatement getIfElseStatement();
 
 }

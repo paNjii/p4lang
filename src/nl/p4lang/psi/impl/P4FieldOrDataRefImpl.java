@@ -34,6 +34,12 @@ public class P4FieldOrDataRefImpl extends ASTWrapperPsiElement implements P4Fiel
 
   @Override
   @Nullable
+  public P4FieldName getFieldName() {
+    return findChildByClass(P4FieldName.class);
+  }
+
+  @Override
+  @Nullable
   public P4FieldRef getFieldRef() {
     return findChildByClass(P4FieldRef.class);
   }

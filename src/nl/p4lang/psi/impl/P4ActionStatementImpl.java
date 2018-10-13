@@ -27,9 +27,15 @@ public class P4ActionStatementImpl extends ASTWrapperPsiElement implements P4Act
   }
 
   @Override
-  @Nullable
-  public P4Arg getArg() {
-    return findChildByClass(P4Arg.class);
+  @NotNull
+  public P4ActionName getActionName() {
+    return findNotNullChildByClass(P4ActionName.class);
+  }
+
+  @Override
+  @NotNull
+  public List<P4Arg> getArgList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4Arg.class);
   }
 
 }

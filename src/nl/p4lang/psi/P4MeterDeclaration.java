@@ -14,6 +14,9 @@ public interface P4MeterDeclaration extends PsiElement {
   P4FieldRef getFieldRef();
 
   @NotNull
+  P4MeterName getMeterName();
+
+  @NotNull
   P4MeterType getMeterType();
 
 }

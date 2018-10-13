@@ -10,4 +10,7 @@ public interface P4ParserFunctionDeclaration extends PsiElement {
   @NotNull
   P4ParserFunctionBody getParserFunctionBody();
 
+  @NotNull
+  P4ParserStateName getParserStateName();
+
 }

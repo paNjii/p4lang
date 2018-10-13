@@ -133,8 +133,8 @@ field_list_calculation_declaration ::=
         input {
             [ <field_list_name> ";" ] +
         }
-        algorithm ":" stream_function_algorithm_name ";"
-        output_width ":" const_value ";"
+        "algorithm" ":" stream_function_algorithm_name ";"
+        "output_width" ":" const_value ";"
 }
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L775
 
@@ -144,16 +144,15 @@ field_list_calculation_declaration ::=
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L827
 calculated_field_declaration ::=
-    calculated_field field_ref { update_verify_spec + }
+    "calculated_field" field_ref { update_verify_spec + }
 
 update_verify_spec ::=
     update_or_verify <field_list_calculation_name> [ if_cond ] ";"
 
-update_or_verify ::= update | verify
-if_cond ::= if ( calc_bool_cond )
+update_or_verify ::= "update" | "verify"
+if_cond ::= "if" "(" calc_bool_cond ")"
 calc_bool_cond ::=
-    valid ( header_ref | field_ref ) |
-field_ref == field_value
+    "valid" "(" header_ref | field_ref ")" | field_ref "==" field_value
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L839
 
 
@@ -165,7 +164,7 @@ value_set_declaration ::= parser_value_set value_set_name";"
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L1032
 parser_function_declaration ::=
-    parser parser_state_name { parser_function_body }
+    "parser" parser_state_name { parser_function_body }
 
 parser_state_name::=<name_textual>
 parser_function_body ::=
@@ -173,14 +172,14 @@ parser_function_body ::=
     return_statement
 
 extract_or_set_statement ::= extract_statement | set_statement
-extract_statement ::= extract ( header_extract_ref )";"
+extract_statement ::= "extract" "(" header_extract_ref ")" ";"
 header_extract_ref ::=
      instance_name |
      instance_name "[" header_extract_index "]"
 
-header_extract_index ::= const_value | next
+header_extract_index ::= const_value | "next"
 
-set_statement ::= "set_metadata" "(" field_ref, metadata_expr ")" ";"
+set_statement ::= "set_metadata" "(" field_ref "," metadata_expr ")" ";"
 metadata_expr ::= field_value | field_or_data_ref
 
 return_statement ::=
@@ -203,7 +202,7 @@ case_return_value_type ::=
 value_or_masked ::=
     field_value | field_value mask field_value | value_set_name
 
-select_exp ::= field_or_data_ref [, field_or_data_ref] *
+select_exp ::= field_or_data_ref ["," field_or_data_ref] *
 field_or_data_ref ::=
     field_ref |
     "latest."field_name |
@@ -284,8 +283,8 @@ action_function_declaration ::=
     action action_header { action_statement * }
 
 action_header ::= action_name "(" [ param_list ] ")"
-param_list ::= param_name [, param_name]*
-action_statement ::= action_name "(" [ arg [, arg]* ] ")" ";"
+param_list ::= param_name ["," param_name]*
+action_statement ::= action_name "(" [ arg ["," arg]* ] ")" ";"
 arg ::= param_name | field_value | field_ref | header_ref
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L2560
 
@@ -311,13 +310,13 @@ action_selector_declaration ::=
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L2711
 table_declaration ::=
-    table table_name {
-        [ reads { field_match + } ]
+    "table" table_name {
+        [ reads "{" field_match+ "}" ]
         table_actions
-        [ min_size ":" const_value ";" ]
-        [ max_size ":" const_value ";" ]
-        [ size ":" const_value ";" ]
-	[ support_timeout ":" true | false ";" ]
+        [ "min_size" ":" const_value ";" ]
+        [ "max_size" ":" const_value ";" ]
+        [ "size" ":" const_value ";" ]
+	[ "support_timeout" ":" ("true" | "false") ";" ]
     }
 
 field_match ::= field_or_masked_ref ":" field_match_type ";"
@@ -372,8 +371,8 @@ if_else_statement ::=
 
 else_block ::= else control_block | else if_else_statement
 bool_expr ::=
-    valid ( header_ref ) | bool_expr bool_op bool_expr |
-    not bool_expr | ( bool_expr ) | exp rel_op exp | true | false
+    "valid" "(" header_ref ")" | bool_expr bool_op bool_expr |
+    "not" bool_expr | "(" bool_expr ")" | exp rel_op exp | "true" | "false"
 
 exp ::=
     exp bin_op exp | un_op exp | field_ref |
@@ -387,7 +386,6 @@ rel_op ::= ">" | ">=" | "==" | "<=" | "<" | "!="
 
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L3412
-
 <name_textual>          ::= { <letter> }
 <letter>         ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L3433

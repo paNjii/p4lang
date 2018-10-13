@@ -34,6 +34,12 @@ public class P4CalcBoolCondImpl extends ASTWrapperPsiElement implements P4CalcBo
 
   @Override
   @Nullable
+  public P4FieldValue getFieldValue() {
+    return findChildByClass(P4FieldValue.class);
+  }
+
+  @Override
+  @Nullable
   public P4HeaderRef getHeaderRef() {
     return findChildByClass(P4HeaderRef.class);
   }

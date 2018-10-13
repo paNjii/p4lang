@@ -7,6 +7,9 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ActionHeader extends PsiElement {
 
+  @NotNull
+  P4ActionName getActionName();
+
   @Nullable
   P4ParamList getParamList();
 

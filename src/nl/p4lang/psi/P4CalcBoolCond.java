@@ -11,6 +11,9 @@ public interface P4CalcBoolCond extends PsiElement {
   P4FieldRef getFieldRef();
 
   @Nullable
+  P4FieldValue getFieldValue();
+
+  @Nullable
   P4HeaderRef getHeaderRef();
 
 }

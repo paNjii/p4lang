@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ReturnToControl extends PsiElement {
 
+  @NotNull
+  P4ControlFunctionName getControlFunctionName();
+
 }

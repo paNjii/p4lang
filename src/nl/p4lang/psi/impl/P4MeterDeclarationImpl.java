@@ -40,6 +40,12 @@ public class P4MeterDeclarationImpl extends ASTWrapperPsiElement implements P4Me
 
   @Override
   @NotNull
+  public P4MeterName getMeterName() {
+    return findNotNullChildByClass(P4MeterName.class);
+  }
+
+  @Override
+  @NotNull
   public P4MeterType getMeterType() {
     return findNotNullChildByClass(P4MeterType.class);
   }

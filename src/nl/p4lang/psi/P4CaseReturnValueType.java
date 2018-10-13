@@ -7,4 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface P4CaseReturnValueType extends PsiElement {
 
+  @Nullable
+  P4ControlFunctionName getControlFunctionName();
+
+  @Nullable
+  P4ParserExceptionName getParserExceptionName();
+
+  @Nullable
+  P4ParserStateName getParserStateName();
+
 }

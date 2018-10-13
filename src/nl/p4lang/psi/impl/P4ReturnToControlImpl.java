@@ -26,4 +26,10 @@ public class P4ReturnToControlImpl extends ASTWrapperPsiElement implements P4Ret
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4ControlFunctionName getControlFunctionName() {
+    return findNotNullChildByClass(P4ControlFunctionName.class);
+  }
+
 }

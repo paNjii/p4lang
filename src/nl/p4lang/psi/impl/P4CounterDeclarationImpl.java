@@ -28,6 +28,12 @@ public class P4CounterDeclarationImpl extends ASTWrapperPsiElement implements P4
 
   @Override
   @NotNull
+  public P4CounterName getCounterName() {
+    return findNotNullChildByClass(P4CounterName.class);
+  }
+
+  @Override
+  @NotNull
   public P4CounterType getCounterType() {
     return findNotNullChildByClass(P4CounterType.class);
   }

@@ -28,6 +28,12 @@ public class P4ParserExceptionDeclarationImpl extends ASTWrapperPsiElement imple
 
   @Override
   @NotNull
+  public P4ParserExceptionName getParserExceptionName() {
+    return findNotNullChildByClass(P4ParserExceptionName.class);
+  }
+
+  @Override
+  @NotNull
   public P4ReturnOrDrop getReturnOrDrop() {
     return findNotNullChildByClass(P4ReturnOrDrop.class);
   }

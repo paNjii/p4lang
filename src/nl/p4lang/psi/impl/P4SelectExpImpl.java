@@ -28,8 +28,8 @@ public class P4SelectExpImpl extends ASTWrapperPsiElement implements P4SelectExp
 
   @Override
   @NotNull
-  public P4FieldOrDataRef getFieldOrDataRef() {
-    return findNotNullChildByClass(P4FieldOrDataRef.class);
+  public List<P4FieldOrDataRef> getFieldOrDataRefList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4FieldOrDataRef.class);
   }
 
 }

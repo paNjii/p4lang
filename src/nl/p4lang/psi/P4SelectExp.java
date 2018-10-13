@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface P4SelectExp extends PsiElement {
 
   @NotNull
-  P4FieldOrDataRef getFieldOrDataRef();
+  List<P4FieldOrDataRef> getFieldOrDataRefList();
 
 }

@@ -10,4 +10,7 @@ public interface P4SetStatement extends PsiElement {
   @NotNull
   P4FieldRef getFieldRef();
 
+  @NotNull
+  P4MetadataExpr getMetadataExpr();
+
 }

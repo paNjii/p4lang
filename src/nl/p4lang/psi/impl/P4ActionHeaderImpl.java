@@ -27,6 +27,12 @@ public class P4ActionHeaderImpl extends ASTWrapperPsiElement implements P4Action
   }
 
   @Override
+  @NotNull
+  public P4ActionName getActionName() {
+    return findNotNullChildByClass(P4ActionName.class);
+  }
+
+  @Override
   @Nullable
   public P4ParamList getParamList() {
     return findChildByClass(P4ParamList.class);

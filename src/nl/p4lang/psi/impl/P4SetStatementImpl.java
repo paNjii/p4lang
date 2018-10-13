@@ -32,4 +32,10 @@ public class P4SetStatementImpl extends ASTWrapperPsiElement implements P4SetSta
     return findNotNullChildByClass(P4FieldRef.class);
   }
 
+  @Override
+  @NotNull
+  public P4MetadataExpr getMetadataExpr() {
+    return findNotNullChildByClass(P4MetadataExpr.class);
+  }
+
 }

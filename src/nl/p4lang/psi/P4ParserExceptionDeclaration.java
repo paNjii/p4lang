@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4ParserExceptionDeclaration extends PsiElement {
 
   @NotNull
+  P4ParserExceptionName getParserExceptionName();
+
+  @NotNull
   P4ReturnOrDrop getReturnOrDrop();
 
   @NotNull

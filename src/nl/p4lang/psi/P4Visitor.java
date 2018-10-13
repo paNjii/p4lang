@@ -19,6 +19,10 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitActionName(@NotNull P4ActionName o) {
+    visitPsiElement(o);
+  }
+
   public void visitActionOrDefault(@NotNull P4ActionOrDefault o) {
     visitPsiElement(o);
   }
@@ -123,7 +127,15 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitControlFnName(@NotNull P4ControlFnName o) {
+    visitPsiElement(o);
+  }
+
   public void visitControlFunctionDeclaration(@NotNull P4ControlFunctionDeclaration o) {
+    visitPsiElement(o);
+  }
+
+  public void visitControlFunctionName(@NotNull P4ControlFunctionName o) {
     visitPsiElement(o);
   }
 
@@ -132,6 +144,10 @@ public class P4Visitor extends PsiElementVisitor {
   }
 
   public void visitCounterDeclaration(@NotNull P4CounterDeclaration o) {
+    visitPsiElement(o);
+  }
+
+  public void visitCounterName(@NotNull P4CounterName o) {
     visitPsiElement(o);
   }
 
@@ -323,6 +339,10 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitMeterName(@NotNull P4MeterName o) {
+    visitPsiElement(o);
+  }
+
   public void visitMeterType(@NotNull P4MeterType o) {
     visitPsiElement(o);
   }
@@ -343,6 +363,10 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitParserExceptionName(@NotNull P4ParserExceptionName o) {
+    visitPsiElement(o);
+  }
+
   public void visitParserFunctionBody(@NotNull P4ParserFunctionBody o) {
     visitPsiElement(o);
   }
@@ -351,7 +375,15 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitParserStateName(@NotNull P4ParserStateName o) {
+    visitPsiElement(o);
+  }
+
   public void visitRegisterDeclaration(@NotNull P4RegisterDeclaration o) {
+    visitPsiElement(o);
+  }
+
+  public void visitRegisterName(@NotNull P4RegisterName o) {
     visitPsiElement(o);
   }
 

@@ -11,6 +11,9 @@ public interface P4FieldOrDataRef extends PsiElement {
   List<P4ConstValue> getConstValueList();
 
   @Nullable
+  P4FieldName getFieldName();
+
+  @Nullable
   P4FieldRef getFieldRef();
 
 }

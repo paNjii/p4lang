@@ -32,4 +32,10 @@ public class P4ControlFunctionDeclarationImpl extends ASTWrapperPsiElement imple
     return findNotNullChildByClass(P4ControlBlock.class);
   }
 
+  @Override
+  @NotNull
+  public P4ControlFnName getControlFnName() {
+    return findNotNullChildByClass(P4ControlFnName.class);
+  }
+
 }

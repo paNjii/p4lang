@@ -17,6 +17,9 @@ public interface P4RegisterDeclaration extends PsiElement {
   P4DirectOrStatic getDirectOrStatic();
 
   @NotNull
+  P4RegisterName getRegisterName();
+
+  @NotNull
   P4WidthDeclaration getWidthDeclaration();
 
 }

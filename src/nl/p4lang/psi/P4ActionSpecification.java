@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ActionSpecification extends PsiElement {
 
+  @Nullable
+  P4ActionName getActionName();
+
 }

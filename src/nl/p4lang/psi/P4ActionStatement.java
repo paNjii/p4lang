@@ -7,7 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ActionStatement extends PsiElement {
 
-  @Nullable
-  P4Arg getArg();
+  @NotNull
+  P4ActionName getActionName();
+
+  @NotNull
+  List<P4Arg> getArgList();
 
 }
