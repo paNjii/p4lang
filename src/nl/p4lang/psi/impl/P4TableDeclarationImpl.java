@@ -44,4 +44,10 @@ public class P4TableDeclarationImpl extends ASTWrapperPsiElement implements P4Ta
     return findNotNullChildByClass(P4TableActions.class);
   }
 
+  @Override
+  @NotNull
+  public P4TableName getTableName() {
+    return findNotNullChildByClass(P4TableName.class);
+  }
+
 }

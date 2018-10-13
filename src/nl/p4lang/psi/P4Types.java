@@ -51,6 +51,7 @@ public interface P4Types {
   IElementType EXTRACT_STATEMENT = new P4ElementType("EXTRACT_STATEMENT");
   IElementType FIELD_DEC = new P4ElementType("FIELD_DEC");
   IElementType FIELD_LIST_CALCULATION_DECLARATION = new P4ElementType("FIELD_LIST_CALCULATION_DECLARATION");
+  IElementType FIELD_LIST_CALCULATION_NAME = new P4ElementType("FIELD_LIST_CALCULATION_NAME");
   IElementType FIELD_LIST_DECLARATION = new P4ElementType("FIELD_LIST_DECLARATION");
   IElementType FIELD_LIST_ENTRY = new P4ElementType("FIELD_LIST_ENTRY");
   IElementType FIELD_LIST_NAME = new P4ElementType("FIELD_LIST_NAME");
@@ -67,6 +68,7 @@ public interface P4Types {
   IElementType HEADER_EXTRACT_REF = new P4ElementType("HEADER_EXTRACT_REF");
   IElementType HEADER_INSTANCE = new P4ElementType("HEADER_INSTANCE");
   IElementType HEADER_REF = new P4ElementType("HEADER_REF");
+  IElementType HEADER_TYPE_DECLARATION = new P4ElementType("HEADER_TYPE_DECLARATION");
   IElementType HEADER_TYPE_NAME = new P4ElementType("HEADER_TYPE_NAME");
   IElementType HEXADECIMAL_BASE = new P4ElementType("HEXADECIMAL_BASE");
   IElementType HEXADECIMAL_DIGIT = new P4ElementType("HEXADECIMAL_DIGIT");
@@ -86,12 +88,12 @@ public interface P4Types {
   IElementType METADATA_INSTANCE = new P4ElementType("METADATA_INSTANCE");
   IElementType METER_DECLARATION = new P4ElementType("METER_DECLARATION");
   IElementType METER_TYPE = new P4ElementType("METER_TYPE");
+  IElementType NAME_TEXTUAL = new P4ElementType("NAME_TEXTUAL");
   IElementType PARAM_LIST = new P4ElementType("PARAM_LIST");
   IElementType PARSER_EXCEPTION_DECLARATION = new P4ElementType("PARSER_EXCEPTION_DECLARATION");
   IElementType PARSER_FUNCTION_BODY = new P4ElementType("PARSER_FUNCTION_BODY");
   IElementType PARSER_FUNCTION_DECLARATION = new P4ElementType("PARSER_FUNCTION_DECLARATION");
   IElementType P_4_DECLARATION = new P4ElementType("P_4_DECLARATION");
-  IElementType P_4_PROGRAM = new P4ElementType("P_4_PROGRAM");
   IElementType REGISTER_DECLARATION = new P4ElementType("REGISTER_DECLARATION");
   IElementType REL_OP = new P4ElementType("REL_OP");
   IElementType RETURN_OR_DROP = new P4ElementType("RETURN_OR_DROP");
@@ -104,7 +106,7 @@ public interface P4Types {
   IElementType STATIC_ATTRIBUTE = new P4ElementType("STATIC_ATTRIBUTE");
   IElementType TABLE_ACTIONS = new P4ElementType("TABLE_ACTIONS");
   IElementType TABLE_DECLARATION = new P4ElementType("TABLE_DECLARATION");
-  IElementType TEXT = new P4ElementType("TEXT");
+  IElementType TABLE_NAME = new P4ElementType("TABLE_NAME");
   IElementType UNSIGNED_VALUE = new P4ElementType("UNSIGNED_VALUE");
   IElementType UN_OP = new P4ElementType("UN_OP");
   IElementType UPDATE_OR_VERIFY = new P4ElementType("UPDATE_OR_VERIFY");
@@ -123,7 +125,6 @@ public interface P4Types {
   IElementType ACTION_SELECTOR = new P4TokenType("action_selector");
   IElementType ACTION_STATEMENT_2_0_1_0_0 = new P4TokenType("action_statement_2_0_1_0_0");
   IElementType ALGORITHM = new P4TokenType("algorithm");
-  IElementType APPLY = new P4TokenType("apply");
   IElementType ATTRIBUTES = new P4TokenType("attributes");
   IElementType BYTES = new P4TokenType("bytes");
   IElementType CALCULATED_FIELD = new P4TokenType("calculated_field");
@@ -142,9 +143,6 @@ public interface P4Types {
   IElementType EXTRACT = new P4TokenType("extract");
   IElementType FALSE = new P4TokenType("false");
   IElementType FIELDS = new P4TokenType("fields");
-  IElementType FIELD_LIST = new P4TokenType("field_list");
-  IElementType FIELD_LIST_CALCULATION = new P4TokenType("field_list_calculation");
-  IElementType FIELD_LIST_CALCULATION_NAME = new P4TokenType("field_list_calculation_name");
   IElementType FIELD_REF__METADATA_EXPR = new P4TokenType("field_ref, metadata_expr");
   IElementType FIELD_REF____FIELD_VALUE = new P4TokenType("field_ref == field_value");
   IElementType HEADER = new P4TokenType("header");
@@ -198,7 +196,6 @@ public interface P4Types {
   IElementType STREAM_FUNCTION_ALGORITHM_NAME = new P4TokenType("stream_function_algorithm_name");
   IElementType SUPPORT_TIMEOUT = new P4TokenType("support_timeout");
   IElementType TABLE = new P4TokenType("table");
-  IElementType TABLE_NAME = new P4TokenType("table_name");
   IElementType TERNARY = new P4TokenType("ternary");
   IElementType TRUE = new P4TokenType("true");
   IElementType TYPE = new P4TokenType("type");
@@ -341,6 +338,9 @@ public interface P4Types {
       else if (type == FIELD_LIST_CALCULATION_DECLARATION) {
         return new P4FieldListCalculationDeclarationImpl(node);
       }
+      else if (type == FIELD_LIST_CALCULATION_NAME) {
+        return new P4FieldListCalculationNameImpl(node);
+      }
       else if (type == FIELD_LIST_DECLARATION) {
         return new P4FieldListDeclarationImpl(node);
       }
@@ -388,6 +388,9 @@ public interface P4Types {
       }
       else if (type == HEADER_REF) {
         return new P4HeaderRefImpl(node);
+      }
+      else if (type == HEADER_TYPE_DECLARATION) {
+        return new P4HeaderTypeDeclarationImpl(node);
       }
       else if (type == HEADER_TYPE_NAME) {
         return new P4HeaderTypeNameImpl(node);
@@ -446,6 +449,9 @@ public interface P4Types {
       else if (type == METER_TYPE) {
         return new P4MeterTypeImpl(node);
       }
+      else if (type == NAME_TEXTUAL) {
+        return new P4NameTextualImpl(node);
+      }
       else if (type == PARAM_LIST) {
         return new P4ParamListImpl(node);
       }
@@ -460,9 +466,6 @@ public interface P4Types {
       }
       else if (type == P_4_DECLARATION) {
         return new P4P4DeclarationImpl(node);
-      }
-      else if (type == P_4_PROGRAM) {
-        return new P4P4ProgramImpl(node);
       }
       else if (type == REGISTER_DECLARATION) {
         return new P4RegisterDeclarationImpl(node);
@@ -499,6 +502,9 @@ public interface P4Types {
       }
       else if (type == TABLE_DECLARATION) {
         return new P4TableDeclarationImpl(node);
+      }
+      else if (type == TABLE_NAME) {
+        return new P4TableNameImpl(node);
       }
       else if (type == UNSIGNED_VALUE) {
         return new P4UnsignedValueImpl(node);

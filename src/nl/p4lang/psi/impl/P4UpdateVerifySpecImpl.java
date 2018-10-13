@@ -27,6 +27,12 @@ public class P4UpdateVerifySpecImpl extends ASTWrapperPsiElement implements P4Up
   }
 
   @Override
+  @NotNull
+  public P4FieldListCalculationName getFieldListCalculationName() {
+    return findNotNullChildByClass(P4FieldListCalculationName.class);
+  }
+
+  @Override
   @Nullable
   public P4IfCond getIfCond() {
     return findChildByClass(P4IfCond.class);

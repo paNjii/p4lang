@@ -7,6 +7,9 @@ import com.intellij.psi.PsiElement;
 
 public interface P4UpdateVerifySpec extends PsiElement {
 
+  @NotNull
+  P4FieldListCalculationName getFieldListCalculationName();
+
   @Nullable
   P4IfCond getIfCond();
 

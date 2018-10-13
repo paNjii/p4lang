@@ -10,6 +10,9 @@ public interface P4FieldListCalculationDeclaration extends PsiElement {
   @NotNull
   P4ConstValue getConstValue();
 
+  @NotNull
+  P4FieldListCalculationName getFieldListCalculationName();
+
   @Nullable
   P4FieldListName getFieldListName();
 

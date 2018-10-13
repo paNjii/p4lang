@@ -10,4 +10,7 @@ public interface P4ApplyAndSelectBlock extends PsiElement {
   @Nullable
   P4CaseList getCaseList();
 
+  @NotNull
+  P4TableName getTableName();
+
 }

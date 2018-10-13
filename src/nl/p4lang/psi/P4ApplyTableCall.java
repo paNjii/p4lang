@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ApplyTableCall extends PsiElement {
 
+  @NotNull
+  P4TableName getTableName();
+
 }

@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ActionSelectorDeclaration extends PsiElement {
 
+  @NotNull
+  P4FieldListCalculationName getFieldListCalculationName();
+
 }

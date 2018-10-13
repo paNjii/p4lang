@@ -33,6 +33,12 @@ public class P4FieldListCalculationDeclarationImpl extends ASTWrapperPsiElement 
   }
 
   @Override
+  @NotNull
+  public P4FieldListCalculationName getFieldListCalculationName() {
+    return findNotNullChildByClass(P4FieldListCalculationName.class);
+  }
+
+  @Override
   @Nullable
   public P4FieldListName getFieldListName() {
     return findChildByClass(P4FieldListName.class);

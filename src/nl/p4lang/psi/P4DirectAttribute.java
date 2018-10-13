@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4DirectAttribute extends PsiElement {
 
+  @NotNull
+  P4TableName getTableName();
+
 }

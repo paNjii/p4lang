@@ -38,10 +38,10 @@ p4_declaration ::=
    "header_type" header_type_name { header_dec_body }
 
 header_type_name ::=
-    text
+    <name_textual>
 
 field_name ::=
-    text
+    <name_textual>
 
 header_dec_body ::=
     fields { field_dec + }
@@ -99,7 +99,7 @@ metadata_initializer ::= { [ field_name ":" field_value ";" ] + }
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L574
 
 instance_name ::=
-    text
+    <name_textual>
 
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L676
@@ -125,7 +125,7 @@ field_ref | header_ref | field_value | <field_list_name> | payload
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L726
 
 <field_list_name> ::=
-    text
+    <name_textual>
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L766
 field_list_calculation_declaration ::=
@@ -139,7 +139,7 @@ field_list_calculation_declaration ::=
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L775
 
 <field_list_calculation_name> ::=
-    <text>
+    <name_textual>
 
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L827
@@ -167,6 +167,7 @@ value_set_declaration ::= parser_value_set value_set_name";"
 parser_function_declaration ::=
     parser parser_state_name { parser_function_body }
 
+parser_state_name::=<name_textual>
 parser_function_body ::=
     extract_or_set_statement*
     return_statement
@@ -179,7 +180,7 @@ header_extract_ref ::=
 
 header_extract_index ::= const_value | next
 
-set_statement ::= set_metadata ( field_ref, metadata_expr ) ";"
+set_statement ::= "set_metadata" "(" field_ref, metadata_expr ")" ";"
 metadata_expr ::= field_value | field_or_data_ref
 
 return_statement ::=
@@ -205,20 +206,22 @@ value_or_masked ::=
 select_exp ::= field_or_data_ref [, field_or_data_ref] *
 field_or_data_ref ::=
     field_ref |
-    latest.field_name |
+    "latest."field_name |
     current( const_value "," const_value )
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L1076
 
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L1144
 parser_exception_declaration ::=
-    parser_exception parser_exception_name {
+    "parser_exception" parser_exception_name {
         set_statement *
         return_or_drop ";"
     }
-
+parser_exception_name::=<name_textual>
 return_or_drop ::= return_to_control | parser_drop
 return_to_control ::= return control_function_name
+
+control_function_name ::= <name_textual>
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L1153
 
 
@@ -231,11 +234,11 @@ counter_declaration ::=
         [ min_width ":" const_expr ";" ]
         [ saturating ";" ]
     }
-
-counter_type ::= bytes | packets | packets_and_bytes
+counter_name ::= <name_textual>
+counter_type ::= "bytes" | "packets" | "packets_and_bytes"
 direct_or_static ::= direct_attribute | static_attribute
-direct_attribute ::= direct ":" table_name
-static_attribute ::= static ":" table_name
+direct_attribute ::= "direct" ":" table_name
+static_attribute ::= "static" ":" table_name
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L1386
 
 
@@ -248,6 +251,9 @@ meter_declaration ::=
         [ direct_or_static ";" ]
         [ instance_count ":" const_expr ";" ]
     }
+
+meter_name ::=
+    <name_textual>
 
 meter_type ::= bytes | packets
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L1450
@@ -262,6 +268,9 @@ register_declaration ::=
         [ instance_count ":" const_value ";" ]
         [ attribute_list ";" ]
     }
+
+register_name ::=
+    <name_textual>
 
 width_declaration ::= width ":" const_value ";"
 
@@ -339,14 +348,23 @@ control_statement ::=
     if_else_statement |
     control_fn_name ( ) ";"
 
-apply_table_call ::= apply ( table_name ) ";"
+apply_table_call ::= "apply" "(" table_name ")" ";"
 
-apply_and_select_block ::= apply ( table_name ) { [ case_list ] }
+apply_and_select_block ::= "apply" "(" table_name ")" { [ case_list ] }
 case_list ::= action_case + | hit_miss_case +
 action_case ::= action_or_default control_block
 action_or_default ::= action_name | default
 hit_miss_case ::= hit_or_miss control_block
 hit_or_miss ::= hit | miss
+
+table_name ::=
+    <name_textual>
+
+action_name ::=
+    <name_textual>
+
+control_fn_name ::=
+    <name_textual>
 
 if_else_statement ::=
     if ( bool_expr ) control_block
@@ -370,6 +388,6 @@ rel_op ::= ">" | ">=" | "==" | "<=" | "<" | "!="
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L3412
 
-<text>          ::= { <letter> }
+<name_textual>          ::= { <letter> }
 <letter>         ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L3433

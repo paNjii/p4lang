@@ -152,6 +152,9 @@ public class P4Parser implements PsiParser, LightPsiParser {
     else if (t == FIELD_LIST_CALCULATION_DECLARATION) {
       r = field_list_calculation_declaration(b, 0);
     }
+    else if (t == FIELD_LIST_CALCULATION_NAME) {
+      r = field_list_calculation_name(b, 0);
+    }
     else if (t == FIELD_LIST_DECLARATION) {
       r = field_list_declaration(b, 0);
     }
@@ -199,6 +202,9 @@ public class P4Parser implements PsiParser, LightPsiParser {
     }
     else if (t == HEADER_REF) {
       r = header_ref(b, 0);
+    }
+    else if (t == HEADER_TYPE_DECLARATION) {
+      r = header_type_declaration(b, 0);
     }
     else if (t == HEADER_TYPE_NAME) {
       r = header_type_name(b, 0);
@@ -257,11 +263,11 @@ public class P4Parser implements PsiParser, LightPsiParser {
     else if (t == METER_TYPE) {
       r = meter_type(b, 0);
     }
+    else if (t == NAME_TEXTUAL) {
+      r = name_textual(b, 0);
+    }
     else if (t == P_4_DECLARATION) {
       r = p4_declaration(b, 0);
-    }
-    else if (t == P_4_PROGRAM) {
-      r = p4_program(b, 0);
     }
     else if (t == PARAM_LIST) {
       r = param_list(b, 0);
@@ -311,8 +317,8 @@ public class P4Parser implements PsiParser, LightPsiParser {
     else if (t == TABLE_DECLARATION) {
       r = table_declaration(b, 0);
     }
-    else if (t == TEXT) {
-      r = text(b, 0);
+    else if (t == TABLE_NAME) {
+      r = table_name(b, 0);
     }
     else if (t == UN_OP) {
       r = un_op(b, 0);
@@ -348,7 +354,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   protected boolean parse_root_(IElementType t, PsiBuilder b, int l) {
-    return header_type_declaration(b, l + 1);
+    return p4_program(b, l + 1);
   }
 
   /* ********************************************************** */
@@ -511,7 +517,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // action_selector selector_name {
-  //         selection_key ":" field_list_calculation_name ";"
+  //         selection_key ":" <field_list_calculation_name> ";"
   //     }
   public static boolean action_selector_declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "action_selector_declaration")) return false;
@@ -524,14 +530,14 @@ public class P4Parser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // selection_key ":" field_list_calculation_name ";"
+  // selection_key ":" <field_list_calculation_name> ";"
   private static boolean action_selector_declaration_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "action_selector_declaration_2")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, SELECTION_KEY);
     r = r && consumeToken(b, ":");
-    r = r && consumeToken(b, FIELD_LIST_CALCULATION_NAME);
+    r = r && field_list_calculation_name(b, l + 1);
     r = r && consumeToken(b, ";");
     exit_section_(b, m, null, r);
     return r;
@@ -599,37 +605,39 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // apply ( table_name ) { [ case_list ] }
+  // "apply" "(" table_name ")" { [ case_list ] }
   public static boolean apply_and_select_block(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "apply_and_select_block")) return false;
-    if (!nextTokenIs(b, APPLY)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, APPLY);
-    r = r && consumeToken(b, TABLE_NAME);
-    r = r && apply_and_select_block_2(b, l + 1);
-    exit_section_(b, m, APPLY_AND_SELECT_BLOCK, r);
+    Marker m = enter_section_(b, l, _NONE_, APPLY_AND_SELECT_BLOCK, "<apply and select block>");
+    r = consumeToken(b, "apply");
+    r = r && consumeToken(b, "(");
+    r = r && table_name(b, l + 1);
+    r = r && consumeToken(b, ")");
+    r = r && apply_and_select_block_4(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   // [ case_list ]
-  private static boolean apply_and_select_block_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "apply_and_select_block_2")) return false;
+  private static boolean apply_and_select_block_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "apply_and_select_block_4")) return false;
     case_list(b, l + 1);
     return true;
   }
 
   /* ********************************************************** */
-  // apply ( table_name ) ";"
+  // "apply" "(" table_name ")" ";"
   public static boolean apply_table_call(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "apply_table_call")) return false;
-    if (!nextTokenIs(b, APPLY)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, APPLY);
-    r = r && consumeToken(b, TABLE_NAME);
+    Marker m = enter_section_(b, l, _NONE_, APPLY_TABLE_CALL, "<apply table call>");
+    r = consumeToken(b, "apply");
+    r = r && consumeToken(b, "(");
+    r = r && table_name(b, l + 1);
+    r = r && consumeToken(b, ")");
     r = r && consumeToken(b, ";");
-    exit_section_(b, m, APPLY_TABLE_CALL, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -1290,7 +1298,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, DIRECT);
     r = r && consumeToken(b, ":");
-    r = r && consumeToken(b, TABLE_NAME);
+    r = r && table_name(b, l + 1);
     exit_section_(b, m, DIRECT_ATTRIBUTE, r);
     return r;
   }
@@ -1433,7 +1441,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   // field_name ":" bit_width [ ( field_mod ) ]";"
   public static boolean field_dec(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_dec")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = field_name(b, l + 1);
@@ -1463,26 +1471,26 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // field_list_calculation field_list_calculation_name {
+  // "field_list_calculation" <field_list_calculation_name> {
   //         input {
-  //             [ field_list_name ";" ] +
+  //             [ <field_list_name> ";" ] +
   //         }
   //         algorithm ":" stream_function_algorithm_name ";"
   //         output_width ":" const_value ";"
   // }
   public static boolean field_list_calculation_declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_list_calculation_declaration")) return false;
-    if (!nextTokenIs(b, FIELD_LIST_CALCULATION)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, FIELD_LIST_CALCULATION, FIELD_LIST_CALCULATION_NAME);
+    Marker m = enter_section_(b, l, _NONE_, FIELD_LIST_CALCULATION_DECLARATION, "<field list calculation declaration>");
+    r = consumeToken(b, "field_list_calculation");
+    r = r && field_list_calculation_name(b, l + 1);
     r = r && field_list_calculation_declaration_2(b, l + 1);
-    exit_section_(b, m, FIELD_LIST_CALCULATION_DECLARATION, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   // input {
-  //             [ field_list_name ";" ] +
+  //             [ <field_list_name> ";" ] +
   //         }
   //         algorithm ":" stream_function_algorithm_name ";"
   //         output_width ":" const_value ";"
@@ -1504,14 +1512,14 @@ public class P4Parser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // [ field_list_name ";" ] +
+  // [ <field_list_name> ";" ] +
   private static boolean field_list_calculation_declaration_2_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_list_calculation_declaration_2_1")) return false;
     field_list_calculation_declaration_2_1_0(b, l + 1);
     return true;
   }
 
-  // field_list_name ";"
+  // <field_list_name> ";"
   private static boolean field_list_calculation_declaration_2_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_list_calculation_declaration_2_1_0")) return false;
     boolean r;
@@ -1523,18 +1531,29 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // field_list field_list_name {
+  // <name_textual>
+  public static boolean field_list_calculation_name(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "field_list_calculation_name")) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = name_textual(b, l + 1);
+    exit_section_(b, m, FIELD_LIST_CALCULATION_NAME, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // "field_list" <field_list_name> {
   //         [ field_list_entry ";" ] +
   //     }
   public static boolean field_list_declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_list_declaration")) return false;
-    if (!nextTokenIs(b, FIELD_LIST)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, FIELD_LIST);
+    Marker m = enter_section_(b, l, _NONE_, FIELD_LIST_DECLARATION, "<field list declaration>");
+    r = consumeToken(b, "field_list");
     r = r && field_list_name(b, l + 1);
     r = r && field_list_declaration_2(b, l + 1);
-    exit_section_(b, m, FIELD_LIST_DECLARATION, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -1557,7 +1576,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // field_ref | header_ref | field_value | field_list_name | payload
+  // field_ref | header_ref | field_value | <field_list_name> | payload
   public static boolean field_list_entry(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_list_entry")) return false;
     boolean r;
@@ -1572,13 +1591,13 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // text
+  // <name_textual>
   public static boolean field_list_name(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_list_name")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = text(b, l + 1);
+    r = name_textual(b, l + 1);
     exit_section_(b, m, FIELD_LIST_NAME, r);
     return r;
   }
@@ -1587,7 +1606,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   // field_or_masked_ref ":" field_match_type ";"
   public static boolean field_match(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_match")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = field_or_masked_ref(b, l + 1);
@@ -1640,13 +1659,13 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // text
+  // <name_textual>
   public static boolean field_name(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_name")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = text(b, l + 1);
+    r = name_textual(b, l + 1);
     exit_section_(b, m, FIELD_NAME, r);
     return r;
   }
@@ -1693,7 +1712,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   // header_ref | header_ref "." valid | field_ref | field_ref mask const_value
   public static boolean field_or_masked_ref(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_or_masked_ref")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = header_ref(b, l + 1);
@@ -1732,7 +1751,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   // header_ref "." field_name
   public static boolean field_ref(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "field_ref")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = header_ref(b, l + 1);
@@ -1842,7 +1861,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   //      instance_name "[" header_extract_index "]"
   public static boolean header_extract_ref(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "header_extract_ref")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = instance_name(b, l + 1);
@@ -1881,7 +1900,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
   // instance_name | instance_name "[" index "]"
   public static boolean header_ref(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "header_ref")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = instance_name(b, l + 1);
@@ -1905,14 +1924,14 @@ public class P4Parser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // "header_type" header_type_name { header_dec_body }
-  static boolean header_type_declaration(PsiBuilder b, int l) {
+  public static boolean header_type_declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "header_type_declaration")) return false;
     boolean r;
-    Marker m = enter_section_(b);
+    Marker m = enter_section_(b, l, _NONE_, HEADER_TYPE_DECLARATION, "<header type declaration>");
     r = consumeToken(b, "header_type");
     r = r && header_type_name(b, l + 1);
     r = r && header_type_declaration_2(b, l + 1);
-    exit_section_(b, m, null, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -1927,13 +1946,13 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // text
+  // <name_textual>
   public static boolean header_type_name(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "header_type_name")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = text(b, l + 1);
+    r = name_textual(b, l + 1);
     exit_section_(b, m, HEADER_TYPE_NAME, r);
     return r;
   }
@@ -2107,13 +2126,13 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // text
+  // <name_textual>
   public static boolean instance_name(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "instance_name")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = text(b, l + 1);
+    r = name_textual(b, l + 1);
     exit_section_(b, m, INSTANCE_NAME, r);
     return r;
   }
@@ -2412,6 +2431,18 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // { <letter> }
+  public static boolean name_textual(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "name_textual")) return false;
+    if (!nextTokenIs(b, _LETTER_)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = letter(b, l + 1);
+    exit_section_(b, m, NAME_TEXTUAL, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // header_type_declaration |
   //     instance_declaration |
   //     field_list_declaration |
@@ -2454,17 +2485,17 @@ public class P4Parser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // p4_declaration +
-  public static boolean p4_program(PsiBuilder b, int l) {
+  static boolean p4_program(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "p4_program")) return false;
     boolean r;
-    Marker m = enter_section_(b, l, _NONE_, P_4_PROGRAM, "<p 4 program>");
+    Marker m = enter_section_(b);
     r = p4_declaration(b, l + 1);
     while (r) {
       int c = current_position_(b);
       if (!p4_declaration(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "p4_program", c)) break;
     }
-    exit_section_(b, l, m, r, false, null);
+    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -2864,7 +2895,7 @@ public class P4Parser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, STATIC);
     r = r && consumeToken(b, ":");
-    r = r && consumeToken(b, TABLE_NAME);
+    r = r && table_name(b, l + 1);
     exit_section_(b, m, STATIC_ATTRIBUTE, r);
     return r;
   }
@@ -2896,7 +2927,8 @@ public class P4Parser implements PsiParser, LightPsiParser {
     if (!nextTokenIs(b, TABLE)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, TABLE, TABLE_NAME);
+    r = consumeToken(b, TABLE);
+    r = r && table_name(b, l + 1);
     r = r && table_declaration_2(b, l + 1);
     exit_section_(b, m, TABLE_DECLARATION, r);
     return r;
@@ -3057,14 +3089,14 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // { <text> }
-  public static boolean text(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "text")) return false;
-    if (!nextTokenIs(b, _TEXT_)) return false;
+  // <name_textual>
+  public static boolean table_name(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "table_name")) return false;
+    if (!nextTokenIs(b, _NAME_TEXTUAL_)) return false;
     boolean r;
-    Marker m = enter_section_(b, l, _COLLAPSE_, TEXT, null);
-    r = text(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
+    Marker m = enter_section_(b);
+    r = name_textual(b, l + 1);
+    exit_section_(b, m, TABLE_NAME, r);
     return r;
   }
 
@@ -3107,14 +3139,14 @@ public class P4Parser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // update_or_verify field_list_calculation_name [ if_cond ] ";"
+  // update_or_verify <field_list_calculation_name> [ if_cond ] ";"
   public static boolean update_verify_spec(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "update_verify_spec")) return false;
     if (!nextTokenIs(b, "<update verify spec>", UPDATE, VERIFY)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, UPDATE_VERIFY_SPEC, "<update verify spec>");
     r = update_or_verify(b, l + 1);
-    r = r && consumeToken(b, FIELD_LIST_CALCULATION_NAME);
+    r = r && field_list_calculation_name(b, l + 1);
     r = r && update_verify_spec_2(b, l + 1);
     r = r && consumeToken(b, ";");
     exit_section_(b, l, m, r, false, null);

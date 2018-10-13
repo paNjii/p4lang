@@ -26,4 +26,10 @@ public class P4DirectAttributeImpl extends ASTWrapperPsiElement implements P4Dir
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4TableName getTableName() {
+    return findNotNullChildByClass(P4TableName.class);
+  }
+
 }

@@ -32,4 +32,10 @@ public class P4ApplyAndSelectBlockImpl extends ASTWrapperPsiElement implements P
     return findChildByClass(P4CaseList.class);
   }
 
+  @Override
+  @NotNull
+  public P4TableName getTableName() {
+    return findNotNullChildByClass(P4TableName.class);
+  }
+
 }

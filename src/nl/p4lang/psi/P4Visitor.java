@@ -179,6 +179,10 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitFieldListCalculationName(@NotNull P4FieldListCalculationName o) {
+    visitPsiElement(o);
+  }
+
   public void visitFieldListDeclaration(@NotNull P4FieldListDeclaration o) {
     visitPsiElement(o);
   }
@@ -240,6 +244,10 @@ public class P4Visitor extends PsiElementVisitor {
   }
 
   public void visitHeaderRef(@NotNull P4HeaderRef o) {
+    visitPsiElement(o);
+  }
+
+  public void visitHeaderTypeDeclaration(@NotNull P4HeaderTypeDeclaration o) {
     visitPsiElement(o);
   }
 
@@ -319,11 +327,11 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitP4Declaration(@NotNull P4P4Declaration o) {
+  public void visitNameTextual(@NotNull P4NameTextual o) {
     visitPsiElement(o);
   }
 
-  public void visitP4Program(@NotNull P4P4Program o) {
+  public void visitP4Declaration(@NotNull P4P4Declaration o) {
     visitPsiElement(o);
   }
 
@@ -391,7 +399,7 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitText(@NotNull P4Text o) {
+  public void visitTableName(@NotNull P4TableName o) {
     visitPsiElement(o);
   }
 

@@ -4,7 +4,6 @@ package nl.p4lang.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
-import null.null;
 
 public interface P4P4Declaration extends PsiElement {
 
@@ -33,7 +32,7 @@ public interface P4P4Declaration extends PsiElement {
   P4FieldListDeclaration getFieldListDeclaration();
 
   @Nullable
-  null getHeaderTypeDeclaration();
+  P4HeaderTypeDeclaration getHeaderTypeDeclaration();
 
   @Nullable
   P4InstanceDeclaration getInstanceDeclaration();

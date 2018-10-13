@@ -10,7 +10,6 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static nl.p4lang.psi.P4Types.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import nl.p4lang.psi.*;
-import null.null;
 
 public class P4P4DeclarationImpl extends ASTWrapperPsiElement implements P4P4Declaration {
 
@@ -77,8 +76,8 @@ public class P4P4DeclarationImpl extends ASTWrapperPsiElement implements P4P4Dec
 
   @Override
   @Nullable
-  public null getHeaderTypeDeclaration() {
-    return findChildByClass(null.class);
+  public P4HeaderTypeDeclaration getHeaderTypeDeclaration() {
+    return findChildByClass(P4HeaderTypeDeclaration.class);
   }
 
   @Override

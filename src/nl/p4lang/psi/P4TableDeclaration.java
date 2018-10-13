@@ -16,4 +16,7 @@ public interface P4TableDeclaration extends PsiElement {
   @NotNull
   P4TableActions getTableActions();
 
+  @NotNull
+  P4TableName getTableName();
+
 }

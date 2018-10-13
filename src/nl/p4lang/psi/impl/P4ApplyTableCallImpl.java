@@ -26,4 +26,10 @@ public class P4ApplyTableCallImpl extends ASTWrapperPsiElement implements P4Appl
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4TableName getTableName() {
+    return findNotNullChildByClass(P4TableName.class);
+  }
+
 }
