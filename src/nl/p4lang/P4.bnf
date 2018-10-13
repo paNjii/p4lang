@@ -1,0 +1,15 @@
+{
+  parserClass="nl.p4lang.parser.P4Parser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="P4"
+  psiImplClassSuffix="Impl"
+  psiPackage="nl.p4lang.psi"
+  psiImplPackage="nl.p4lang.psi.impl"
+
+  elementTypeHolderClass="nl.p4lang.psi.P4Types"
+  elementTypeClass="nl.p4lang.psi.P4ElementType"
+  tokenTypeClass="nl.p4lang.psi.P4TokenType"
+}
+
