@@ -32,4 +32,10 @@ public class P4HeaderExtractRefImpl extends ASTWrapperPsiElement implements P4He
     return findChildByClass(P4HeaderExtractIndex.class);
   }
 
+  @Override
+  @NotNull
+  public P4InstanceName getInstanceName() {
+    return findNotNullChildByClass(P4InstanceName.class);
+  }
+
 }

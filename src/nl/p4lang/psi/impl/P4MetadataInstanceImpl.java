@@ -28,6 +28,18 @@ public class P4MetadataInstanceImpl extends ASTWrapperPsiElement implements P4Me
 
   @Override
   @Nullable
+  public P4HeaderTypeName getHeaderTypeName() {
+    return findChildByClass(P4HeaderTypeName.class);
+  }
+
+  @Override
+  @Nullable
+  public P4InstanceName getInstanceName() {
+    return findChildByClass(P4InstanceName.class);
+  }
+
+  @Override
+  @Nullable
   public P4MetadataInitializer getMetadataInitializer() {
     return findChildByClass(P4MetadataInitializer.class);
   }

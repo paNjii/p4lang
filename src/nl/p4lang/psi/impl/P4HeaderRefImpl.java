@@ -32,4 +32,10 @@ public class P4HeaderRefImpl extends ASTWrapperPsiElement implements P4HeaderRef
     return findChildByClass(P4Index.class);
   }
 
+  @Override
+  @NotNull
+  public P4InstanceName getInstanceName() {
+    return findNotNullChildByClass(P4InstanceName.class);
+  }
+
 }

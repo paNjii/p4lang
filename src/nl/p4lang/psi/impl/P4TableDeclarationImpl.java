@@ -28,6 +28,12 @@ public class P4TableDeclarationImpl extends ASTWrapperPsiElement implements P4Ta
 
   @Override
   @NotNull
+  public List<P4ConstValue> getConstValueList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4ConstValue.class);
+  }
+
+  @Override
+  @NotNull
   public List<P4FieldMatch> getFieldMatchList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, P4FieldMatch.class);
   }

@@ -32,4 +32,10 @@ public class P4FieldListDeclarationImpl extends ASTWrapperPsiElement implements 
     return findChildByClass(P4FieldListEntry.class);
   }
 
+  @Override
+  @NotNull
+  public P4FieldListName getFieldListName() {
+    return findNotNullChildByClass(P4FieldListName.class);
+  }
+
 }

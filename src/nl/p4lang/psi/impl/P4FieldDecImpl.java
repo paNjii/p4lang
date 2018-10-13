@@ -26,4 +26,22 @@ public class P4FieldDecImpl extends ASTWrapperPsiElement implements P4FieldDec {
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4BitWidth getBitWidth() {
+    return findNotNullChildByClass(P4BitWidth.class);
+  }
+
+  @Override
+  @Nullable
+  public P4FieldMod getFieldMod() {
+    return findChildByClass(P4FieldMod.class);
+  }
+
+  @Override
+  @NotNull
+  public P4FieldName getFieldName() {
+    return findNotNullChildByClass(P4FieldName.class);
+  }
+
 }

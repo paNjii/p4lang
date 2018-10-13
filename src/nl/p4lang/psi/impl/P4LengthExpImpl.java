@@ -34,6 +34,12 @@ public class P4LengthExpImpl extends ASTWrapperPsiElement implements P4LengthExp
 
   @Override
   @Nullable
+  public P4FieldName getFieldName() {
+    return findChildByClass(P4FieldName.class);
+  }
+
+  @Override
+  @Nullable
   public P4LengthBinOp getLengthBinOp() {
     return findChildByClass(P4LengthBinOp.class);
   }

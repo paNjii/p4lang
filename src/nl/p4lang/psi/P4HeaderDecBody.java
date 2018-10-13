@@ -7,7 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface P4HeaderDecBody extends PsiElement {
 
+  @Nullable
+  P4ConstValue getConstValue();
+
   @NotNull
   List<P4FieldDec> getFieldDecList();
+
+  @Nullable
+  P4LengthExp getLengthExp();
 
 }

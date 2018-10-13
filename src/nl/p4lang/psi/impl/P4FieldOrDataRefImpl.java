@@ -27,9 +27,9 @@ public class P4FieldOrDataRefImpl extends ASTWrapperPsiElement implements P4Fiel
   }
 
   @Override
-  @Nullable
-  public P4ConstValue getConstValue() {
-    return findChildByClass(P4ConstValue.class);
+  @NotNull
+  public List<P4ConstValue> getConstValueList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4ConstValue.class);
   }
 
   @Override

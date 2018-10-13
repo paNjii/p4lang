@@ -7,8 +7,8 @@ import com.intellij.psi.PsiElement;
 
 public interface P4FieldOrDataRef extends PsiElement {
 
-  @Nullable
-  P4ConstValue getConstValue();
+  @NotNull
+  List<P4ConstValue> getConstValueList();
 
   @Nullable
   P4FieldRef getFieldRef();

@@ -28,6 +28,12 @@ public class P4FieldRefImpl extends ASTWrapperPsiElement implements P4FieldRef {
 
   @Override
   @NotNull
+  public P4FieldName getFieldName() {
+    return findNotNullChildByClass(P4FieldName.class);
+  }
+
+  @Override
+  @NotNull
   public P4HeaderRef getHeaderRef() {
     return findNotNullChildByClass(P4HeaderRef.class);
   }

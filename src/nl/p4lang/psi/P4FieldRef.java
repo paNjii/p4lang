@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4FieldRef extends PsiElement {
 
   @NotNull
+  P4FieldName getFieldName();
+
+  @NotNull
   P4HeaderRef getHeaderRef();
 
 }

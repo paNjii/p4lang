@@ -32,4 +32,16 @@ public class P4ArrayInstanceImpl extends ASTWrapperPsiElement implements P4Array
     return findNotNullChildByClass(P4ConstValue.class);
   }
 
+  @Override
+  @NotNull
+  public P4HeaderTypeName getHeaderTypeName() {
+    return findNotNullChildByClass(P4HeaderTypeName.class);
+  }
+
+  @Override
+  @NotNull
+  public P4InstanceName getInstanceName() {
+    return findNotNullChildByClass(P4InstanceName.class);
+  }
+
 }

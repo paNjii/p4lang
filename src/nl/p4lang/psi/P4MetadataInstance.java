@@ -8,6 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface P4MetadataInstance extends PsiElement {
 
   @Nullable
+  P4HeaderTypeName getHeaderTypeName();
+
+  @Nullable
+  P4InstanceName getInstanceName();
+
+  @Nullable
   P4MetadataInitializer getMetadataInitializer();
 
 }

@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4AttrEntry extends PsiElement {
 
+  @NotNull
+  List<P4AttrEntry> getAttrEntryList();
+
 }

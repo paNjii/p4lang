@@ -26,4 +26,10 @@ public class P4AttributeListImpl extends ASTWrapperPsiElement implements P4Attri
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4AttrEntry getAttrEntry() {
+    return findNotNullChildByClass(P4AttrEntry.class);
+  }
+
 }

@@ -26,4 +26,16 @@ public class P4FieldListCalculationDeclarationImpl extends ASTWrapperPsiElement 
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4ConstValue getConstValue() {
+    return findNotNullChildByClass(P4ConstValue.class);
+  }
+
+  @Override
+  @Nullable
+  public P4FieldListName getFieldListName() {
+    return findChildByClass(P4FieldListName.class);
+  }
+
 }

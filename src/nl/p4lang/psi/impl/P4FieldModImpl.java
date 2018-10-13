@@ -26,4 +26,10 @@ public class P4FieldModImpl extends ASTWrapperPsiElement implements P4FieldMod {
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public List<P4FieldMod> getFieldModList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4FieldMod.class);
+  }
+
 }

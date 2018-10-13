@@ -26,4 +26,16 @@ public class P4MetadataInitializerImpl extends ASTWrapperPsiElement implements P
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public P4FieldName getFieldName() {
+    return findChildByClass(P4FieldName.class);
+  }
+
+  @Override
+  @Nullable
+  public P4FieldValue getFieldValue() {
+    return findChildByClass(P4FieldValue.class);
+  }
+
 }

@@ -10,4 +10,7 @@ public interface P4HeaderExtractRef extends PsiElement {
   @Nullable
   P4HeaderExtractIndex getHeaderExtractIndex();
 
+  @NotNull
+  P4InstanceName getInstanceName();
+
 }

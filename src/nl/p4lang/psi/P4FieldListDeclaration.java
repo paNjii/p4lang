@@ -10,4 +10,7 @@ public interface P4FieldListDeclaration extends PsiElement {
   @Nullable
   P4FieldListEntry getFieldListEntry();
 
+  @NotNull
+  P4FieldListName getFieldListName();
+
 }

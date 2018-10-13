@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4FieldMod extends PsiElement {
 
+  @NotNull
+  List<P4FieldMod> getFieldModList();
+
 }

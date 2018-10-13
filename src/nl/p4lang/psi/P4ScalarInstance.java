@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ScalarInstance extends PsiElement {
 
+  @NotNull
+  P4HeaderTypeName getHeaderTypeName();
+
+  @NotNull
+  P4InstanceName getInstanceName();
+
 }

@@ -26,4 +26,16 @@ public class P4ScalarInstanceImpl extends ASTWrapperPsiElement implements P4Scal
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4HeaderTypeName getHeaderTypeName() {
+    return findNotNullChildByClass(P4HeaderTypeName.class);
+  }
+
+  @Override
+  @NotNull
+  public P4InstanceName getInstanceName() {
+    return findNotNullChildByClass(P4InstanceName.class);
+  }
+
 }

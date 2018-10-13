@@ -11,6 +11,9 @@ public interface P4LengthExp extends PsiElement {
   P4ConstValue getConstValue();
 
   @Nullable
+  P4FieldName getFieldName();
+
+  @Nullable
   P4LengthBinOp getLengthBinOp();
 
   @NotNull

@@ -10,4 +10,10 @@ public interface P4ArrayInstance extends PsiElement {
   @NotNull
   P4ConstValue getConstValue();
 
+  @NotNull
+  P4HeaderTypeName getHeaderTypeName();
+
+  @NotNull
+  P4InstanceName getInstanceName();
+
 }

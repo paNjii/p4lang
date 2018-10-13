@@ -27,9 +27,9 @@ public class P4ValueListImpl extends ASTWrapperPsiElement implements P4ValueList
   }
 
   @Override
-  @Nullable
-  public P4ValueOrMasked getValueOrMasked() {
-    return findChildByClass(P4ValueOrMasked.class);
+  @NotNull
+  public List<P4ValueOrMasked> getValueOrMaskedList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4ValueOrMasked.class);
   }
 
 }

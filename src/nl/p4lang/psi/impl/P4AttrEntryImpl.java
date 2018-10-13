@@ -26,4 +26,10 @@ public class P4AttrEntryImpl extends ASTWrapperPsiElement implements P4AttrEntry
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public List<P4AttrEntry> getAttrEntryList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4AttrEntry.class);
+  }
+
 }

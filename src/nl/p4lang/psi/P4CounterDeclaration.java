@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface P4CounterDeclaration extends PsiElement {
 
+  @NotNull
+  P4CounterType getCounterType();
+
+  @Nullable
+  P4DirectOrStatic getDirectOrStatic();
+
 }

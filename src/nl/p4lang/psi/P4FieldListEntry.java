@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4FieldListEntry extends PsiElement {
 
   @Nullable
+  P4FieldListName getFieldListName();
+
+  @Nullable
   P4FieldRef getFieldRef();
 
   @Nullable

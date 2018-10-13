@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface P4FieldListCalculationDeclaration extends PsiElement {
 
+  @NotNull
+  P4ConstValue getConstValue();
+
+  @Nullable
+  P4FieldListName getFieldListName();
+
 }

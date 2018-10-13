@@ -26,4 +26,22 @@ public class P4MeterDeclarationImpl extends ASTWrapperPsiElement implements P4Me
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public P4DirectOrStatic getDirectOrStatic() {
+    return findChildByClass(P4DirectOrStatic.class);
+  }
+
+  @Override
+  @Nullable
+  public P4FieldRef getFieldRef() {
+    return findChildByClass(P4FieldRef.class);
+  }
+
+  @Override
+  @NotNull
+  public P4MeterType getMeterType() {
+    return findNotNullChildByClass(P4MeterType.class);
+  }
+
 }

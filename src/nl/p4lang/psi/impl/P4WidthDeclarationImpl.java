@@ -26,4 +26,10 @@ public class P4WidthDeclarationImpl extends ASTWrapperPsiElement implements P4Wi
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4ConstValue getConstValue() {
+    return findNotNullChildByClass(P4ConstValue.class);
+  }
+
 }

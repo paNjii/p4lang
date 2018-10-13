@@ -7,6 +7,15 @@ import com.intellij.psi.PsiElement;
 
 public interface P4RegisterDeclaration extends PsiElement {
 
+  @Nullable
+  P4AttributeList getAttributeList();
+
+  @Nullable
+  P4ConstValue getConstValue();
+
+  @Nullable
+  P4DirectOrStatic getDirectOrStatic();
+
   @NotNull
   P4WidthDeclaration getWidthDeclaration();
 

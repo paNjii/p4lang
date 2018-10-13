@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4TableDeclaration extends PsiElement {
 
   @NotNull
+  List<P4ConstValue> getConstValueList();
+
+  @NotNull
   List<P4FieldMatch> getFieldMatchList();
 
   @NotNull

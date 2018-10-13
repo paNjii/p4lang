@@ -10,4 +10,7 @@ public interface P4ActionProfileDeclaration extends PsiElement {
   @NotNull
   P4ActionSpecification getActionSpecification();
 
+  @Nullable
+  P4ConstValue getConstValue();
+
 }

@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface P4MetadataInitializer extends PsiElement {
 
+  @Nullable
+  P4FieldName getFieldName();
+
+  @Nullable
+  P4FieldValue getFieldValue();
+
 }

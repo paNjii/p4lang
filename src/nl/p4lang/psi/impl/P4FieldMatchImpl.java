@@ -28,6 +28,12 @@ public class P4FieldMatchImpl extends ASTWrapperPsiElement implements P4FieldMat
 
   @Override
   @NotNull
+  public P4FieldMatchType getFieldMatchType() {
+    return findNotNullChildByClass(P4FieldMatchType.class);
+  }
+
+  @Override
+  @NotNull
   public P4FieldOrMaskedRef getFieldOrMaskedRef() {
     return findNotNullChildByClass(P4FieldOrMaskedRef.class);
   }

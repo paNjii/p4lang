@@ -28,6 +28,12 @@ public class P4FieldListEntryImpl extends ASTWrapperPsiElement implements P4Fiel
 
   @Override
   @Nullable
+  public P4FieldListName getFieldListName() {
+    return findChildByClass(P4FieldListName.class);
+  }
+
+  @Override
+  @Nullable
   public P4FieldRef getFieldRef() {
     return findChildByClass(P4FieldRef.class);
   }

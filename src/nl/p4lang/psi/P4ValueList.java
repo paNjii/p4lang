@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ValueList extends PsiElement {
 
-  @Nullable
-  P4ValueOrMasked getValueOrMasked();
+  @NotNull
+  List<P4ValueOrMasked> getValueOrMaskedList();
 
 }

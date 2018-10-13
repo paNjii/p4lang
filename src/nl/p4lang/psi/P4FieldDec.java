@@ -7,4 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface P4FieldDec extends PsiElement {
 
+  @NotNull
+  P4BitWidth getBitWidth();
+
+  @Nullable
+  P4FieldMod getFieldMod();
+
+  @NotNull
+  P4FieldName getFieldName();
+
 }

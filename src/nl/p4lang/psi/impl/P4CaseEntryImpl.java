@@ -28,6 +28,12 @@ public class P4CaseEntryImpl extends ASTWrapperPsiElement implements P4CaseEntry
 
   @Override
   @NotNull
+  public P4CaseReturnValueType getCaseReturnValueType() {
+    return findNotNullChildByClass(P4CaseReturnValueType.class);
+  }
+
+  @Override
+  @NotNull
   public P4ValueList getValueList() {
     return findNotNullChildByClass(P4ValueList.class);
   }

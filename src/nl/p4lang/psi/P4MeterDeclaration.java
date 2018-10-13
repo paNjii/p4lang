@@ -7,4 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface P4MeterDeclaration extends PsiElement {
 
+  @Nullable
+  P4DirectOrStatic getDirectOrStatic();
+
+  @Nullable
+  P4FieldRef getFieldRef();
+
+  @NotNull
+  P4MeterType getMeterType();
+
 }

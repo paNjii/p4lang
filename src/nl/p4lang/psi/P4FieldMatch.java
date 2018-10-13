@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4FieldMatch extends PsiElement {
 
   @NotNull
+  P4FieldMatchType getFieldMatchType();
+
+  @NotNull
   P4FieldOrMaskedRef getFieldOrMaskedRef();
 
 }

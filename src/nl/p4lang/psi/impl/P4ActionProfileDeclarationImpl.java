@@ -32,4 +32,10 @@ public class P4ActionProfileDeclarationImpl extends ASTWrapperPsiElement impleme
     return findNotNullChildByClass(P4ActionSpecification.class);
   }
 
+  @Override
+  @Nullable
+  public P4ConstValue getConstValue() {
+    return findChildByClass(P4ConstValue.class);
+  }
+
 }

@@ -53,9 +53,11 @@ public interface P4Types {
   IElementType FIELD_LIST_CALCULATION_DECLARATION = new P4ElementType("FIELD_LIST_CALCULATION_DECLARATION");
   IElementType FIELD_LIST_DECLARATION = new P4ElementType("FIELD_LIST_DECLARATION");
   IElementType FIELD_LIST_ENTRY = new P4ElementType("FIELD_LIST_ENTRY");
+  IElementType FIELD_LIST_NAME = new P4ElementType("FIELD_LIST_NAME");
   IElementType FIELD_MATCH = new P4ElementType("FIELD_MATCH");
   IElementType FIELD_MATCH_TYPE = new P4ElementType("FIELD_MATCH_TYPE");
   IElementType FIELD_MOD = new P4ElementType("FIELD_MOD");
+  IElementType FIELD_NAME = new P4ElementType("FIELD_NAME");
   IElementType FIELD_OR_DATA_REF = new P4ElementType("FIELD_OR_DATA_REF");
   IElementType FIELD_OR_MASKED_REF = new P4ElementType("FIELD_OR_MASKED_REF");
   IElementType FIELD_REF = new P4ElementType("FIELD_REF");
@@ -65,6 +67,7 @@ public interface P4Types {
   IElementType HEADER_EXTRACT_REF = new P4ElementType("HEADER_EXTRACT_REF");
   IElementType HEADER_INSTANCE = new P4ElementType("HEADER_INSTANCE");
   IElementType HEADER_REF = new P4ElementType("HEADER_REF");
+  IElementType HEADER_TYPE_NAME = new P4ElementType("HEADER_TYPE_NAME");
   IElementType HEXADECIMAL_BASE = new P4ElementType("HEXADECIMAL_BASE");
   IElementType HEXADECIMAL_DIGIT = new P4ElementType("HEXADECIMAL_DIGIT");
   IElementType HEXADECIMAL_VALUE = new P4ElementType("HEXADECIMAL_VALUE");
@@ -74,8 +77,10 @@ public interface P4Types {
   IElementType IF_ELSE_STATEMENT = new P4ElementType("IF_ELSE_STATEMENT");
   IElementType INDEX = new P4ElementType("INDEX");
   IElementType INSTANCE_DECLARATION = new P4ElementType("INSTANCE_DECLARATION");
+  IElementType INSTANCE_NAME = new P4ElementType("INSTANCE_NAME");
   IElementType LENGTH_BIN_OP = new P4ElementType("LENGTH_BIN_OP");
   IElementType LENGTH_EXP = new P4ElementType("LENGTH_EXP");
+  IElementType LETTER = new P4ElementType("LETTER");
   IElementType METADATA_EXPR = new P4ElementType("METADATA_EXPR");
   IElementType METADATA_INITIALIZER = new P4ElementType("METADATA_INITIALIZER");
   IElementType METADATA_INSTANCE = new P4ElementType("METADATA_INSTANCE");
@@ -99,6 +104,7 @@ public interface P4Types {
   IElementType STATIC_ATTRIBUTE = new P4ElementType("STATIC_ATTRIBUTE");
   IElementType TABLE_ACTIONS = new P4ElementType("TABLE_ACTIONS");
   IElementType TABLE_DECLARATION = new P4ElementType("TABLE_DECLARATION");
+  IElementType TEXT = new P4ElementType("TEXT");
   IElementType UNSIGNED_VALUE = new P4ElementType("UNSIGNED_VALUE");
   IElementType UN_OP = new P4ElementType("UN_OP");
   IElementType UPDATE_OR_VERIFY = new P4ElementType("UPDATE_OR_VERIFY");
@@ -109,83 +115,59 @@ public interface P4Types {
   IElementType WIDTH_DECLARATION = new P4ElementType("WIDTH_DECLARATION");
   IElementType WIDTH_SPEC = new P4ElementType("WIDTH_SPEC");
 
-  IElementType A = new P4TokenType("A");
   IElementType ACTION = new P4TokenType("action");
   IElementType ACTIONS = new P4TokenType("actions");
   IElementType ACTION_NAME = new P4TokenType("action_name");
   IElementType ACTION_PROFILE = new P4TokenType("action_profile");
-  IElementType ACTION_PROFILE_:_ACTION_PROFILE_NAME = new P4TokenType("action_profile : action_profile_name");
   IElementType ACTION_PROFILE_NAME = new P4TokenType("action_profile_name");
   IElementType ACTION_SELECTOR = new P4TokenType("action_selector");
   IElementType ACTION_STATEMENT_2_0_1_0_0 = new P4TokenType("action_statement_2_0_1_0_0");
-  IElementType AND = new P4TokenType("and");
+  IElementType ALGORITHM = new P4TokenType("algorithm");
   IElementType APPLY = new P4TokenType("apply");
-  IElementType ATTRIBUTES_:_ATTR_ENTRY = new P4TokenType("attributes : attr_entry");
-  IElementType ATTR_ENTRY___ATTR_ENTRY = new P4TokenType("attr_entry , attr_entry");
-  IElementType B = new P4TokenType("B");
-  IElementType BINARY_DIGIT_0_0 = new P4TokenType("binary_digit_0_0");
-  IElementType BIN_OP_2_0 = new P4TokenType("bin_op_2_0");
-  IElementType BIN_OP_3_0 = new P4TokenType("bin_op_3_0");
-  IElementType BIN_OP_4_0 = new P4TokenType("bin_op_4_0");
-  IElementType BIN_OP_5_0 = new P4TokenType("bin_op_5_0");
-  IElementType BIN_OP_7_0 = new P4TokenType("bin_op_7_0");
+  IElementType ATTRIBUTES = new P4TokenType("attributes");
   IElementType BYTES = new P4TokenType("bytes");
-  IElementType C = new P4TokenType("C");
   IElementType CALCULATED_FIELD = new P4TokenType("calculated_field");
-  IElementType CONST_VALUE_0_0_1_0 = new P4TokenType("const_value_0_0_1_0");
-  IElementType CONST_VALUE___CONST_VALUE = new P4TokenType("const_value , const_value");
+  IElementType CONST_EXPR = new P4TokenType("const_expr");
   IElementType CONTROL = new P4TokenType("control");
   IElementType CONTROL_FN_NAME = new P4TokenType("control_fn_name");
   IElementType CONTROL_FUNCTION_NAME = new P4TokenType("control_function_name");
   IElementType COUNTER = new P4TokenType("counter");
   IElementType COUNTER_NAME = new P4TokenType("counter_name");
   IElementType CURRENT = new P4TokenType("current");
-  IElementType D = new P4TokenType("D");
   IElementType DEFAULT = new P4TokenType("default");
-  IElementType DIRECT_:_TABLE_NAME = new P4TokenType("direct : table_name");
-  IElementType E = new P4TokenType("E");
+  IElementType DIRECT = new P4TokenType("direct");
+  IElementType DYNAMIC_ACTION_SELECTION = new P4TokenType("dynamic_action_selection");
   IElementType ELSE = new P4TokenType("else");
   IElementType EXACT = new P4TokenType("exact");
   IElementType EXTRACT = new P4TokenType("extract");
-  IElementType F = new P4TokenType("F");
   IElementType FALSE = new P4TokenType("false");
   IElementType FIELDS = new P4TokenType("fields");
   IElementType FIELD_LIST = new P4TokenType("field_list");
   IElementType FIELD_LIST_CALCULATION = new P4TokenType("field_list_calculation");
   IElementType FIELD_LIST_CALCULATION_NAME = new P4TokenType("field_list_calculation_name");
-  IElementType FIELD_LIST_NAME = new P4TokenType("field_list_name");
-  IElementType FIELD_MOD___FIELD_MOD = new P4TokenType("field_mod , field_mod");
-  IElementType FIELD_NAME = new P4TokenType("field_name");
-  IElementType FIELD_NAME_:_BIT_WIDTH = new P4TokenType("field_name : bit_width");
-  IElementType FIELD_NAME_:_FIELD_VALUE = new P4TokenType("field_name : field_value");
-  IElementType FIELD_OR_MASKED_REF_:_FIELD_MATCH_TYPE = new P4TokenType("field_or_masked_ref : field_match_type");
   IElementType FIELD_REF__METADATA_EXPR = new P4TokenType("field_ref, metadata_expr");
   IElementType FIELD_REF____FIELD_VALUE = new P4TokenType("field_ref == field_value");
   IElementType HEADER = new P4TokenType("header");
-  IElementType HEADER_REF___FIELD_NAME = new P4TokenType("header_ref . field_name");
-  IElementType HEADER_TYPE = new P4TokenType("header_type");
-  IElementType HEADER_TYPE_NAME = new P4TokenType("header_type_name");
   IElementType HIT = new P4TokenType("hit");
   IElementType IF = new P4TokenType("if");
   IElementType INPUT = new P4TokenType("input");
-  IElementType INSTANCE_NAME = new P4TokenType("instance_name");
+  IElementType INSTANCE_COUNT = new P4TokenType("instance_count");
   IElementType LAST = new P4TokenType("last");
   IElementType LATEST_FIELD_NAME = new P4TokenType("latest.field_name");
-  IElementType LENGTH_:_LENGTH_EXP = new P4TokenType("length : length_exp");
-  IElementType LENGTH_BIN_OP_1_0 = new P4TokenType("length_bin_op_1_0");
-  IElementType LENGTH_BIN_OP_3_0 = new P4TokenType("length_bin_op_3_0");
-  IElementType LENGTH_BIN_OP_4_0 = new P4TokenType("length_bin_op_4_0");
+  IElementType LENGTH = new P4TokenType("length");
   IElementType LPM = new P4TokenType("lpm");
   IElementType MASK = new P4TokenType("mask");
+  IElementType MAX_LENGTH = new P4TokenType("max_length");
+  IElementType MAX_SIZE = new P4TokenType("max_size");
   IElementType METADATA = new P4TokenType("metadata");
-  IElementType METADATA_INSTANCE_1_0 = new P4TokenType("metadata_instance_1_0");
   IElementType METER = new P4TokenType("meter");
   IElementType METER_NAME = new P4TokenType("meter_name");
-  IElementType MIN_SIZE_:_CONST_VALUE = new P4TokenType("min_size : const_value");
+  IElementType MIN_SIZE = new P4TokenType("min_size");
+  IElementType MIN_WIDTH = new P4TokenType("min_width");
   IElementType MISS = new P4TokenType("miss");
   IElementType NEXT = new P4TokenType("next");
   IElementType NOT = new P4TokenType("not");
-  IElementType OR = new P4TokenType("or");
+  IElementType OUTPUT_WIDTH = new P4TokenType("output_width");
   IElementType PACKETS = new P4TokenType("packets");
   IElementType PACKETS_AND_BYTES = new P4TokenType("packets_and_bytes");
   IElementType PARAM_LIST_1_0_0 = new P4TokenType("param_list_1_0_0");
@@ -202,39 +184,30 @@ public interface P4Types {
   IElementType READS = new P4TokenType("reads");
   IElementType REGISTER = new P4TokenType("register");
   IElementType REGISTER_NAME = new P4TokenType("register_name");
-  IElementType REL_OP_0_0 = new P4TokenType("rel_op_0_0");
-  IElementType REL_OP_1_0 = new P4TokenType("rel_op_1_0");
-  IElementType REL_OP_2_0 = new P4TokenType("rel_op_2_0");
-  IElementType REL_OP_3_0 = new P4TokenType("rel_op_3_0");
-  IElementType REL_OP_4_0 = new P4TokenType("rel_op_4_0");
-  IElementType REL_OP_5_0 = new P4TokenType("rel_op_5_0");
+  IElementType RESULT = new P4TokenType("result");
   IElementType RETURN = new P4TokenType("return");
   IElementType SATURATING = new P4TokenType("saturating");
   IElementType SELECT = new P4TokenType("select");
-  IElementType SELECTION_KEY_:_FIELD_LIST_CALCULATION_NAME = new P4TokenType("selection_key : field_list_calculation_name");
+  IElementType SELECTION_KEY = new P4TokenType("selection_key");
   IElementType SELECTOR_NAME = new P4TokenType("selector_name");
   IElementType SELECT_EXP_1_0_0 = new P4TokenType("select_exp_1_0_0");
   IElementType SET_METADATA = new P4TokenType("set_metadata");
   IElementType SIGNED = new P4TokenType("signed");
-  IElementType SIZE_:_CONST_VALUE = new P4TokenType("size : const_value");
-  IElementType STATIC_:_TABLE_NAME = new P4TokenType("static : table_name");
+  IElementType SIZE = new P4TokenType("size");
+  IElementType STATIC = new P4TokenType("static");
+  IElementType STREAM_FUNCTION_ALGORITHM_NAME = new P4TokenType("stream_function_algorithm_name");
+  IElementType SUPPORT_TIMEOUT = new P4TokenType("support_timeout");
   IElementType TABLE = new P4TokenType("table");
   IElementType TABLE_NAME = new P4TokenType("table_name");
   IElementType TERNARY = new P4TokenType("ternary");
   IElementType TRUE = new P4TokenType("true");
-  IElementType TYPE_:_COUNTER_TYPE = new P4TokenType("type : counter_type");
-  IElementType TYPE_:_METER_TYPE = new P4TokenType("type : meter_type");
-  IElementType UN_OP_0_0 = new P4TokenType("un_op_0_0");
-  IElementType UN_OP_1_0 = new P4TokenType("un_op_1_0");
+  IElementType TYPE = new P4TokenType("type");
   IElementType UPDATE = new P4TokenType("update");
   IElementType VALID = new P4TokenType("valid");
   IElementType VALUE = new P4TokenType("value");
-  IElementType VALUE_LIST_0_1_0_0 = new P4TokenType("value_list_0_1_0_0");
-  IElementType VALUE_LIST_:_CASE_RETURN_VALUE_TYPE = new P4TokenType("value_list : case_return_value_type");
   IElementType VALUE_SET_NAME = new P4TokenType("value_set_name");
   IElementType VERIFY = new P4TokenType("verify");
-  IElementType WIDTH_:_CONST_VALUE = new P4TokenType("width : const_value");
-  IElementType X = new P4TokenType("X");
+  IElementType WIDTH = new P4TokenType("width");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
@@ -374,6 +347,9 @@ public interface P4Types {
       else if (type == FIELD_LIST_ENTRY) {
         return new P4FieldListEntryImpl(node);
       }
+      else if (type == FIELD_LIST_NAME) {
+        return new P4FieldListNameImpl(node);
+      }
       else if (type == FIELD_MATCH) {
         return new P4FieldMatchImpl(node);
       }
@@ -382,6 +358,9 @@ public interface P4Types {
       }
       else if (type == FIELD_MOD) {
         return new P4FieldModImpl(node);
+      }
+      else if (type == FIELD_NAME) {
+        return new P4FieldNameImpl(node);
       }
       else if (type == FIELD_OR_DATA_REF) {
         return new P4FieldOrDataRefImpl(node);
@@ -410,6 +389,9 @@ public interface P4Types {
       else if (type == HEADER_REF) {
         return new P4HeaderRefImpl(node);
       }
+      else if (type == HEADER_TYPE_NAME) {
+        return new P4HeaderTypeNameImpl(node);
+      }
       else if (type == HEXADECIMAL_BASE) {
         return new P4HexadecimalBaseImpl(node);
       }
@@ -437,11 +419,17 @@ public interface P4Types {
       else if (type == INSTANCE_DECLARATION) {
         return new P4InstanceDeclarationImpl(node);
       }
+      else if (type == INSTANCE_NAME) {
+        return new P4InstanceNameImpl(node);
+      }
       else if (type == LENGTH_BIN_OP) {
         return new P4LengthBinOpImpl(node);
       }
       else if (type == LENGTH_EXP) {
         return new P4LengthExpImpl(node);
+      }
+      else if (type == LETTER) {
+        return new P4LetterImpl(node);
       }
       else if (type == METADATA_EXPR) {
         return new P4MetadataExprImpl(node);

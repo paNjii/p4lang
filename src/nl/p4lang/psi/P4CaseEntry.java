@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4CaseEntry extends PsiElement {
 
   @NotNull
+  P4CaseReturnValueType getCaseReturnValueType();
+
+  @NotNull
   P4ValueList getValueList();
 
 }
