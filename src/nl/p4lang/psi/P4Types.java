@@ -132,7 +132,6 @@ public interface P4Types {
   IElementType WIDTH_SPEC = new P4ElementType("WIDTH_SPEC");
 
   IElementType CURRENT = new P4TokenType("current");
-  IElementType HEADER = new P4TokenType("header");
   IElementType LAST = new P4TokenType("last");
   IElementType VALUE = new P4TokenType("value");
 
