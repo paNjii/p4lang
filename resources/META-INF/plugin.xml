@@ -22,7 +22,7 @@
     -->
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="nl.p4lang.P4ileTypeFactory"/>
+        <fileTypeFactory implementation="nl.p4lang.P4FileTypeFactory"/>
     </extensions>
 
     <actions>
