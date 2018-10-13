@@ -28,6 +28,12 @@ public class P4ActionProfileDeclarationImpl extends ASTWrapperPsiElement impleme
 
   @Override
   @NotNull
+  public P4ActionProfileName getActionProfileName() {
+    return findNotNullChildByClass(P4ActionProfileName.class);
+  }
+
+  @Override
+  @NotNull
   public P4ActionSpecification getActionSpecification() {
     return findNotNullChildByClass(P4ActionSpecification.class);
   }
@@ -36,6 +42,12 @@ public class P4ActionProfileDeclarationImpl extends ASTWrapperPsiElement impleme
   @Nullable
   public P4ConstValue getConstValue() {
     return findChildByClass(P4ConstValue.class);
+  }
+
+  @Override
+  @Nullable
+  public P4SelectorName getSelectorName() {
+    return findChildByClass(P4SelectorName.class);
   }
 
 }

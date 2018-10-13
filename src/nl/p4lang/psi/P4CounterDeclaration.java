@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4CounterDeclaration extends PsiElement {
 
   @NotNull
+  List<P4ConstExpr> getConstExprList();
+
+  @NotNull
   P4CounterName getCounterName();
 
   @NotNull

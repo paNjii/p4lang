@@ -26,4 +26,10 @@ public class P4ActionProfileSpecificationImpl extends ASTWrapperPsiElement imple
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4ActionProfileName getActionProfileName() {
+    return findNotNullChildByClass(P4ActionProfileName.class);
+  }
+
 }

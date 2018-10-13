@@ -44,4 +44,10 @@ public class P4ArgImpl extends ASTWrapperPsiElement implements P4Arg {
     return findChildByClass(P4HeaderRef.class);
   }
 
+  @Override
+  @Nullable
+  public P4ParamName getParamName() {
+    return findChildByClass(P4ParamName.class);
+  }
+
 }

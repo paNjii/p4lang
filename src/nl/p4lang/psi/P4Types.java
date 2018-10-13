@@ -14,6 +14,7 @@ public interface P4Types {
   IElementType ACTION_NAME = new P4ElementType("ACTION_NAME");
   IElementType ACTION_OR_DEFAULT = new P4ElementType("ACTION_OR_DEFAULT");
   IElementType ACTION_PROFILE_DECLARATION = new P4ElementType("ACTION_PROFILE_DECLARATION");
+  IElementType ACTION_PROFILE_NAME = new P4ElementType("ACTION_PROFILE_NAME");
   IElementType ACTION_PROFILE_SPECIFICATION = new P4ElementType("ACTION_PROFILE_SPECIFICATION");
   IElementType ACTION_SELECTOR_DECLARATION = new P4ElementType("ACTION_SELECTOR_DECLARATION");
   IElementType ACTION_SPECIFICATION = new P4ElementType("ACTION_SPECIFICATION");
@@ -36,6 +37,7 @@ public interface P4Types {
   IElementType CASE_ENTRY = new P4ElementType("CASE_ENTRY");
   IElementType CASE_LIST = new P4ElementType("CASE_LIST");
   IElementType CASE_RETURN_VALUE_TYPE = new P4ElementType("CASE_RETURN_VALUE_TYPE");
+  IElementType CONST_EXPR = new P4ElementType("CONST_EXPR");
   IElementType CONST_VALUE = new P4ElementType("CONST_VALUE");
   IElementType CONTROL_BLOCK = new P4ElementType("CONTROL_BLOCK");
   IElementType CONTROL_FN_NAME = new P4ElementType("CONTROL_FN_NAME");
@@ -95,6 +97,7 @@ public interface P4Types {
   IElementType METER_TYPE = new P4ElementType("METER_TYPE");
   IElementType NAME_TEXTUAL = new P4ElementType("NAME_TEXTUAL");
   IElementType PARAM_LIST = new P4ElementType("PARAM_LIST");
+  IElementType PARAM_NAME = new P4ElementType("PARAM_NAME");
   IElementType PARSER_EXCEPTION_DECLARATION = new P4ElementType("PARSER_EXCEPTION_DECLARATION");
   IElementType PARSER_EXCEPTION_NAME = new P4ElementType("PARSER_EXCEPTION_NAME");
   IElementType PARSER_FUNCTION_BODY = new P4ElementType("PARSER_FUNCTION_BODY");
@@ -109,9 +112,11 @@ public interface P4Types {
   IElementType RETURN_TO_CONTROL = new P4ElementType("RETURN_TO_CONTROL");
   IElementType RETURN_VALUE_TYPE = new P4ElementType("RETURN_VALUE_TYPE");
   IElementType SCALAR_INSTANCE = new P4ElementType("SCALAR_INSTANCE");
+  IElementType SELECTOR_NAME = new P4ElementType("SELECTOR_NAME");
   IElementType SELECT_EXP = new P4ElementType("SELECT_EXP");
   IElementType SET_STATEMENT = new P4ElementType("SET_STATEMENT");
   IElementType STATIC_ATTRIBUTE = new P4ElementType("STATIC_ATTRIBUTE");
+  IElementType STREAM_FUNCTION_ALGORITHM_NAME = new P4ElementType("STREAM_FUNCTION_ALGORITHM_NAME");
   IElementType TABLE_ACTIONS = new P4ElementType("TABLE_ACTIONS");
   IElementType TABLE_DECLARATION = new P4ElementType("TABLE_DECLARATION");
   IElementType TABLE_NAME = new P4ElementType("TABLE_NAME");
@@ -122,63 +127,14 @@ public interface P4Types {
   IElementType VALUE_LIST = new P4ElementType("VALUE_LIST");
   IElementType VALUE_OR_MASKED = new P4ElementType("VALUE_OR_MASKED");
   IElementType VALUE_SET_DECLARATION = new P4ElementType("VALUE_SET_DECLARATION");
+  IElementType VALUE_SET_NAME = new P4ElementType("VALUE_SET_NAME");
   IElementType WIDTH_DECLARATION = new P4ElementType("WIDTH_DECLARATION");
   IElementType WIDTH_SPEC = new P4ElementType("WIDTH_SPEC");
 
-  IElementType ACTION = new P4TokenType("action");
-  IElementType ACTIONS = new P4TokenType("actions");
-  IElementType ACTION_PROFILE = new P4TokenType("action_profile");
-  IElementType ACTION_PROFILE_NAME = new P4TokenType("action_profile_name");
-  IElementType ACTION_SELECTOR = new P4TokenType("action_selector");
-  IElementType ATTRIBUTES = new P4TokenType("attributes");
-  IElementType BYTES = new P4TokenType("bytes");
-  IElementType CONST_EXPR = new P4TokenType("const_expr");
-  IElementType CONTROL = new P4TokenType("control");
-  IElementType COUNTER = new P4TokenType("counter");
   IElementType CURRENT = new P4TokenType("current");
-  IElementType DEFAULT = new P4TokenType("default");
-  IElementType DYNAMIC_ACTION_SELECTION = new P4TokenType("dynamic_action_selection");
-  IElementType ELSE = new P4TokenType("else");
-  IElementType EXACT = new P4TokenType("exact");
-  IElementType FIELDS = new P4TokenType("fields");
   IElementType HEADER = new P4TokenType("header");
-  IElementType HIT = new P4TokenType("hit");
-  IElementType IF = new P4TokenType("if");
-  IElementType INPUT = new P4TokenType("input");
-  IElementType INSTANCE_COUNT = new P4TokenType("instance_count");
   IElementType LAST = new P4TokenType("last");
-  IElementType LENGTH = new P4TokenType("length");
-  IElementType LPM = new P4TokenType("lpm");
-  IElementType MASK = new P4TokenType("mask");
-  IElementType MAX_LENGTH = new P4TokenType("max_length");
-  IElementType METADATA = new P4TokenType("metadata");
-  IElementType METER = new P4TokenType("meter");
-  IElementType MIN_WIDTH = new P4TokenType("min_width");
-  IElementType MISS = new P4TokenType("miss");
-  IElementType PACKETS = new P4TokenType("packets");
-  IElementType PARAM_NAME = new P4TokenType("param_name");
-  IElementType PARSER_DROP = new P4TokenType("parser_drop");
-  IElementType PARSER_VALUE_SET = new P4TokenType("parser_value_set");
-  IElementType PARSE_ERROR = new P4TokenType("parse_error");
-  IElementType PAYLOAD = new P4TokenType("payload");
-  IElementType RANGE = new P4TokenType("range");
-  IElementType READS = new P4TokenType("reads");
-  IElementType REGISTER = new P4TokenType("register");
-  IElementType RESULT = new P4TokenType("result");
-  IElementType RETURN = new P4TokenType("return");
-  IElementType SATURATING = new P4TokenType("saturating");
-  IElementType SELECT = new P4TokenType("select");
-  IElementType SELECTION_KEY = new P4TokenType("selection_key");
-  IElementType SELECTOR_NAME = new P4TokenType("selector_name");
-  IElementType SIGNED = new P4TokenType("signed");
-  IElementType SIZE = new P4TokenType("size");
-  IElementType STREAM_FUNCTION_ALGORITHM_NAME = new P4TokenType("stream_function_algorithm_name");
-  IElementType TERNARY = new P4TokenType("ternary");
-  IElementType TYPE = new P4TokenType("type");
-  IElementType VALID = new P4TokenType("valid");
   IElementType VALUE = new P4TokenType("value");
-  IElementType VALUE_SET_NAME = new P4TokenType("value_set_name");
-  IElementType WIDTH = new P4TokenType("width");
 
   class Factory {
     public static PsiElement createElement(ASTNode node) {
@@ -200,6 +156,9 @@ public interface P4Types {
       }
       else if (type == ACTION_PROFILE_DECLARATION) {
         return new P4ActionProfileDeclarationImpl(node);
+      }
+      else if (type == ACTION_PROFILE_NAME) {
+        return new P4ActionProfileNameImpl(node);
       }
       else if (type == ACTION_PROFILE_SPECIFICATION) {
         return new P4ActionProfileSpecificationImpl(node);
@@ -266,6 +225,9 @@ public interface P4Types {
       }
       else if (type == CASE_RETURN_VALUE_TYPE) {
         return new P4CaseReturnValueTypeImpl(node);
+      }
+      else if (type == CONST_EXPR) {
+        return new P4ConstExprImpl(node);
       }
       else if (type == CONST_VALUE) {
         return new P4ConstValueImpl(node);
@@ -444,6 +406,9 @@ public interface P4Types {
       else if (type == PARAM_LIST) {
         return new P4ParamListImpl(node);
       }
+      else if (type == PARAM_NAME) {
+        return new P4ParamNameImpl(node);
+      }
       else if (type == PARSER_EXCEPTION_DECLARATION) {
         return new P4ParserExceptionDeclarationImpl(node);
       }
@@ -486,6 +451,9 @@ public interface P4Types {
       else if (type == SCALAR_INSTANCE) {
         return new P4ScalarInstanceImpl(node);
       }
+      else if (type == SELECTOR_NAME) {
+        return new P4SelectorNameImpl(node);
+      }
       else if (type == SELECT_EXP) {
         return new P4SelectExpImpl(node);
       }
@@ -494,6 +462,9 @@ public interface P4Types {
       }
       else if (type == STATIC_ATTRIBUTE) {
         return new P4StaticAttributeImpl(node);
+      }
+      else if (type == STREAM_FUNCTION_ALGORITHM_NAME) {
+        return new P4StreamFunctionAlgorithmNameImpl(node);
       }
       else if (type == TABLE_ACTIONS) {
         return new P4TableActionsImpl(node);
@@ -524,6 +495,9 @@ public interface P4Types {
       }
       else if (type == VALUE_SET_DECLARATION) {
         return new P4ValueSetDeclarationImpl(node);
+      }
+      else if (type == VALUE_SET_NAME) {
+        return new P4ValueSetNameImpl(node);
       }
       else if (type == WIDTH_DECLARATION) {
         return new P4WidthDeclarationImpl(node);

@@ -32,4 +32,10 @@ public class P4ActionSelectorDeclarationImpl extends ASTWrapperPsiElement implem
     return findNotNullChildByClass(P4FieldListCalculationName.class);
   }
 
+  @Override
+  @NotNull
+  public P4SelectorName getSelectorName() {
+    return findNotNullChildByClass(P4SelectorName.class);
+  }
+
 }

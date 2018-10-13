@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface P4ControlBlock extends PsiElement {
 
   @NotNull
-  List<P4ControlStatement> getControlStatementList();
+  P4ControlStatement getControlStatement();
 
 }

@@ -26,4 +26,10 @@ public class P4ParamListImpl extends ASTWrapperPsiElement implements P4ParamList
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public List<P4ParamName> getParamNameList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4ParamName.class);
+  }
+
 }

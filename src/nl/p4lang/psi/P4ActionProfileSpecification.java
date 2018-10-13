@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ActionProfileSpecification extends PsiElement {
 
+  @NotNull
+  P4ActionProfileName getActionProfileName();
+
 }

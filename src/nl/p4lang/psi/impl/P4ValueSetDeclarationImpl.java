@@ -26,4 +26,10 @@ public class P4ValueSetDeclarationImpl extends ASTWrapperPsiElement implements P
     else super.accept(visitor);
   }
 
+  @Override
+  @NotNull
+  public P4ValueSetName getValueSetName() {
+    return findNotNullChildByClass(P4ValueSetName.class);
+  }
+
 }

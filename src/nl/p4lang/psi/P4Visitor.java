@@ -31,6 +31,10 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitActionProfileName(@NotNull P4ActionProfileName o) {
+    visitPsiElement(o);
+  }
+
   public void visitActionProfileSpecification(@NotNull P4ActionProfileSpecification o) {
     visitPsiElement(o);
   }
@@ -116,6 +120,10 @@ public class P4Visitor extends PsiElementVisitor {
   }
 
   public void visitCaseReturnValueType(@NotNull P4CaseReturnValueType o) {
+    visitPsiElement(o);
+  }
+
+  public void visitConstExpr(@NotNull P4ConstExpr o) {
     visitPsiElement(o);
   }
 
@@ -359,6 +367,10 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitParamName(@NotNull P4ParamName o) {
+    visitPsiElement(o);
+  }
+
   public void visitParserExceptionDeclaration(@NotNull P4ParserExceptionDeclaration o) {
     visitPsiElement(o);
   }
@@ -415,11 +427,19 @@ public class P4Visitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitSelectorName(@NotNull P4SelectorName o) {
+    visitPsiElement(o);
+  }
+
   public void visitSetStatement(@NotNull P4SetStatement o) {
     visitPsiElement(o);
   }
 
   public void visitStaticAttribute(@NotNull P4StaticAttribute o) {
+    visitPsiElement(o);
+  }
+
+  public void visitStreamFunctionAlgorithmName(@NotNull P4StreamFunctionAlgorithmName o) {
     visitPsiElement(o);
   }
 
@@ -460,6 +480,10 @@ public class P4Visitor extends PsiElementVisitor {
   }
 
   public void visitValueSetDeclaration(@NotNull P4ValueSetDeclaration o) {
+    visitPsiElement(o);
+  }
+
+  public void visitValueSetName(@NotNull P4ValueSetName o) {
     visitPsiElement(o);
   }
 

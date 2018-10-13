@@ -10,4 +10,7 @@ public interface P4ActionSelectorDeclaration extends PsiElement {
   @NotNull
   P4FieldListCalculationName getFieldListCalculationName();
 
+  @NotNull
+  P4SelectorName getSelectorName();
+
 }

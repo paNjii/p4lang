@@ -44,4 +44,10 @@ public class P4FieldListCalculationDeclarationImpl extends ASTWrapperPsiElement 
     return findChildByClass(P4FieldListName.class);
   }
 
+  @Override
+  @NotNull
+  public P4StreamFunctionAlgorithmName getStreamFunctionAlgorithmName() {
+    return findNotNullChildByClass(P4StreamFunctionAlgorithmName.class);
+  }
+
 }

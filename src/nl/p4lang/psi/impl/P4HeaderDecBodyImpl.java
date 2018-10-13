@@ -34,8 +34,8 @@ public class P4HeaderDecBodyImpl extends ASTWrapperPsiElement implements P4Heade
 
   @Override
   @NotNull
-  public List<P4FieldDec> getFieldDecList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4FieldDec.class);
+  public P4FieldDec getFieldDec() {
+    return findNotNullChildByClass(P4FieldDec.class);
   }
 
   @Override

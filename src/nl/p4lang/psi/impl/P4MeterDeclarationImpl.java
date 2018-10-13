@@ -28,6 +28,12 @@ public class P4MeterDeclarationImpl extends ASTWrapperPsiElement implements P4Me
 
   @Override
   @Nullable
+  public P4ConstExpr getConstExpr() {
+    return findChildByClass(P4ConstExpr.class);
+  }
+
+  @Override
+  @Nullable
   public P4DirectOrStatic getDirectOrStatic() {
     return findChildByClass(P4DirectOrStatic.class);
   }

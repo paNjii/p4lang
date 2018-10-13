@@ -32,4 +32,10 @@ public class P4ValueOrMaskedImpl extends ASTWrapperPsiElement implements P4Value
     return findChildByClass(P4FieldValue.class);
   }
 
+  @Override
+  @Nullable
+  public P4ValueSetName getValueSetName() {
+    return findChildByClass(P4ValueSetName.class);
+  }
+
 }

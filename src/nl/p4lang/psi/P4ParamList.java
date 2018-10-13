@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface P4ParamList extends PsiElement {
 
+  @NotNull
+  List<P4ParamName> getParamNameList();
+
 }

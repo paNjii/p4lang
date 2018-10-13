@@ -16,4 +16,7 @@ public interface P4FieldListCalculationDeclaration extends PsiElement {
   @Nullable
   P4FieldListName getFieldListName();
 
+  @NotNull
+  P4StreamFunctionAlgorithmName getStreamFunctionAlgorithmName();
+
 }

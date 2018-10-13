@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface P4MeterDeclaration extends PsiElement {
 
   @Nullable
+  P4ConstExpr getConstExpr();
+
+  @Nullable
   P4DirectOrStatic getDirectOrStatic();
 
   @Nullable

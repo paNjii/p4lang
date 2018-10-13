@@ -16,4 +16,7 @@ public interface P4Arg extends PsiElement {
   @Nullable
   P4HeaderRef getHeaderRef();
 
+  @Nullable
+  P4ParamName getParamName();
+
 }

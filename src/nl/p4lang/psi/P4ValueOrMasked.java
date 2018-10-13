@@ -10,4 +10,7 @@ public interface P4ValueOrMasked extends PsiElement {
   @Nullable
   P4FieldValue getFieldValue();
 
+  @Nullable
+  P4ValueSetName getValueSetName();
+
 }

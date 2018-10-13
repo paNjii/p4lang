@@ -11,7 +11,7 @@ public interface P4HeaderDecBody extends PsiElement {
   P4ConstValue getConstValue();
 
   @NotNull
-  List<P4FieldDec> getFieldDecList();
+  P4FieldDec getFieldDec();
 
   @Nullable
   P4LengthExp getLengthExp();

@@ -28,8 +28,8 @@ public class P4ControlBlockImpl extends ASTWrapperPsiElement implements P4Contro
 
   @Override
   @NotNull
-  public List<P4ControlStatement> getControlStatementList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, P4ControlStatement.class);
+  public P4ControlStatement getControlStatement() {
+    return findNotNullChildByClass(P4ControlStatement.class);
   }
 
 }
