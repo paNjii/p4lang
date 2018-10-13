@@ -36,8 +36,6 @@ bit_width ::= const_value | "*"
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L435
 
 
-
-
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L305
 const_value ::= [ "+" | - ] [ width_spec ] unsigned_value
 unsigned_value ::= binary_value | decimal_value | hexadecimal_value
@@ -299,3 +297,66 @@ action_profile_specification ::=
     action_profile : action_profile_name
 
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L2738
+
+
+// https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L2897
+control_function_declaration ::=
+    control control_fn_name control_block
+control_block ::= { control_statement * }
+control_statement ::=
+    apply_table_call |
+    apply_and_select_block |
+    if_else_statement |
+    control_fn_name ( ) ;
+
+apply_table_call ::= apply ( table_name ) ;
+
+apply_and_select_block ::= apply ( table_name ) { [ case_list ] }
+case_list ::= action_case + | hit_miss_case +
+action_case ::= action_or_default control_block
+action_or_default ::= action_name | default
+hit_miss_case ::= hit_or_miss control_block
+hit_or_miss ::= hit | miss
+
+if_else_statement ::=
+    if ( bool_expr ) control_block
+    [ else_block ]
+
+else_block ::= else control_block | else if_else_statement
+bool_expr ::=
+    valid ( header_ref ) | bool_expr bool_op bool_expr |
+    not bool_expr | ( bool_expr ) | exp rel_op exp | true | false
+
+exp ::=
+    exp bin_op exp | un_op exp | field_ref |
+    value | ( exp )
+
+bin_op ::= "+" | "*" | - | << | >> | \& | "|" | ^
+un_op ::= ~ | -
+bool_op ::= or | and
+rel_op ::= > | >= | == | <= | < | !=
+// https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L2933
+
+
+// https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L3412
+p4_program ::= p4_declaration +
+
+p4_declaration ::=
+    header_type_declaration |
+    instance_declaration |
+    field_list_declaration |
+    field_list_calculation_declaration |
+    calculated_field_declaration |
+    value_set_declaration |
+    parser_function_declaration |
+    parser_exception_declaration |
+    counter_declaration |
+    meter_declaration |
+    register_declaration |
+    action_function_declaration |
+    action_profile_declaration |
+    action_selector_declaration |
+    table_declaration |
+    control_function_declaration
+
+// https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L3433
