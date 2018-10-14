@@ -11,7 +11,7 @@
     fields='fields'
 
     space='regexp:\s+'
-    comment='regexp://.*'
+    comment='regexp:\/\*(\*(?!\/)|[^*])*\*\/'
     integer="regexp:[0-9]+"
     number='regexp:\d+(\.\d*)?'
     id='regexp:\p{Alpha}\w*'
