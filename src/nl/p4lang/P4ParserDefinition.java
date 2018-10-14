@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class P4ParserDefinition implements ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(P4Types.COMMENT);
+    public static final TokenSet COMMENTS = TokenSet.create(TokenType.DUMMY_HOLDER);
 
     public static final IFileElementType FILE = new IFileElementType(P4Language.INSTANCE);
 
