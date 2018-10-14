@@ -15,6 +15,7 @@
 
 p4_program ::= p4_declaration +
 
+COMMENT::="//"
 p4_declaration ::=
     header_type_declaration |
     instance_declaration |

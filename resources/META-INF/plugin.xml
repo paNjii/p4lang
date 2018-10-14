@@ -23,6 +23,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="nl.p4lang.P4FileTypeFactory"/>
+        <lang.parserDefinition language="P4Language" implementationClass="nl.p4lang.P4ParserDefinition"/>
     </extensions>
 
     <actions>

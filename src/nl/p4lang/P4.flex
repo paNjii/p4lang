@@ -24,7 +24,7 @@ import static nl.p4lang.psi.P4Types.*;
 
 EOL=\R
 WHITE_SPACE=\s+
-
+END_OF_LINE_COMMENT=("#"|"!")[^\r\n]*
 
 %%
 <YYINITIAL> {
@@ -36,5 +36,7 @@ WHITE_SPACE=\s+
 
 
 }
+
+<YYINITIAL> {END_OF_LINE_COMMENT}                           { yybegin(YYINITIAL); return P4Types.COMMENT; }
 
 [^] { return BAD_CHARACTER; }
