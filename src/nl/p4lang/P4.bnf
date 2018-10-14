@@ -33,10 +33,12 @@
 
 p4_program ::= p4_declaration+
 
-p4_declaration ::=    header_type_declaration |    instance_declaration |    field_list_declaration |    field_list_calculation_declaration |    calculated_field_declaration |    value_set_declaration |    parser_function_declaration |    parser_exception_declaration |    counter_declaration |    meter_declaration |    register_declaration |     action_function_declaration |    action_profile_declaration |    action_selector_declaration |    table_declaration |    control_function_declaration
+p4_declaration ::=    header_type_declaration |    instance_declaration |    field_list_declaration |    field_list_calculation_declaration |    calculated_field_declaration |    value_set_declaration |    parser_function_declaration |    parser_exception_declaration |    counter_declaration |    meter_declaration |    register_declaration |     action_function_declaration |    action_profile_declaration |    action_selector_declaration |    table_declaration |    control_function_declaration | define_declaration
 // https://github.com/p4lang/p4-spec/blob/master/p4-14/v1.0.4/tex/p4.pt#L416
 header_type_declaration ::= header_type header_type_name "{" header_dec_body "}"
 header_type_name ::=  id
+
+define_declaration ::= "#" define id unsigned_value
 
 header_dec_body ::=
     fields "{" field_dec* "}"
